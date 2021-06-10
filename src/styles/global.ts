@@ -17,5 +17,12 @@ export default createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
   }
+
+  
 `;
