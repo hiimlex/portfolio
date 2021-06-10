@@ -127,10 +127,8 @@ const CardContainer: React.FC = () => {
 	useEffect(() => {
 		generateCardList().then(() => {});
 		setInterval(() => {
-			setTimeout(() => {
-				generateRandomCard();
-			});
-		}, 1500);
+			generateRandomCard();
+		}, 1200);
 		// Não sei pq mas ele n aceita 2ms :)
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
