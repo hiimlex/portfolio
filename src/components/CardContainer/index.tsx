@@ -7,6 +7,7 @@ import { Container } from "./styles";
 const CardContainer: React.FC = () => {
 	const [cards, setCards] = useState<Card[] | []>([]);
 	const [width, height] = useWindowSize();
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const [grid, setGrid] = useState<Grid>({
 		column: 4,
 		row: 3,
@@ -130,16 +131,16 @@ const CardContainer: React.FC = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	// useEffect(() => {
-	// 	const id = setTimeout(() => {
-	// 		setCounter(counter + 1);
-	// 		generateRandomCard();
-	// 	}, 5000);
-	// 	return () => {
-	// 		clearTimeout(id);
-	// 	};
-	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	// }, [counter]);
+	useEffect(() => {
+		const id = setTimeout(() => {
+			setCounter(counter + 1);
+			generateRandomCard();
+		}, 5000);
+		return () => {
+			clearTimeout(id);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [counter]);
 
 	return (
 		<Container

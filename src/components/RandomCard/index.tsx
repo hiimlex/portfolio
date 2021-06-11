@@ -22,7 +22,7 @@ const RandomCard: React.FC<Props> = (props) => {
 		const id = setTimeout(() => {
 			setCounter(counter + 1);
 			setAnimation(randomAnimation);
-		}, 2000);
+		}, 2500);
 		return () => {
 			clearTimeout(id);
 		};

@@ -5,14 +5,24 @@ interface StyledProps {
 }
 
 export const Card = styled.div<StyledProps>`
-	width: fit-content;
-	height: fit-content;
 	z-index: 1;
 	${(props) => props.animation};
+	transition: all 0.5s ease-in-out;
+	position: relative;
+	overflow: hidden;
+	width: fit-content;
+	height: fit-content;
+	border-radius: 8px;
 `;
 
 export const Image = styled.img`
 	width: 100%;
 	height: auto;
-	border-radius: 8px;
+	transition: all 0.5s ease-in-out;
+	cursor: pointer;
+	transform: inherit;
+
+	&:hover {
+		transform: scale(1.4);
+	}
 `;
