@@ -1,11 +1,8 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-
+import useWindowSize from "../../utils/windowSize";
 import RandomCard from "../RandomCard";
 import { Container } from "./styles";
-
-import useWindowSize from "../../utils/windowSize";
-
-import axios from "axios";
 
 const CardContainer: React.FC = () => {
 	const [cards, setCards] = useState<Card[] | []>([]);
@@ -14,6 +11,7 @@ const CardContainer: React.FC = () => {
 		column: 4,
 		row: 3,
 	});
+	const [counter, setCounter] = useState(0);
 
 	const getList = React.useCallback(
 		async (page: number) => {
@@ -125,14 +123,23 @@ const CardContainer: React.FC = () => {
 	}, [grid.column, grid.row, createCard]);
 
 	useEffect(() => {
-		generateCardList().then(() => {});
-		setInterval(() => {
-			generateRandomCard();
-		}, 1200);
+		generateCardList();
+
 		// Não sei pq mas ele n aceita 2ms :)
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
+
+	// useEffect(() => {
+	// 	const id = setTimeout(() => {
+	// 		setCounter(counter + 1);
+	// 		generateRandomCard();
+	// 	}, 5000);
+	// 	return () => {
+	// 		clearTimeout(id);
+	// 	};
+	// 	// eslint-disable-next-line react-hooks/exhaustive-deps
+	// }, [counter]);
 
 	return (
 		<Container

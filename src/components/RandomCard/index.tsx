@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { FlattenSimpleInterpolation } from "styled-components";
+import randomAnimation from "../../utils/randomAnimation";
 import { Card, Image } from "./styles";
 
 interface Props {
@@ -12,11 +14,28 @@ interface Size {
 }
 
 const RandomCard: React.FC<Props> = (props) => {
+	const [animation, setAnimation] =
+		useState<FlattenSimpleInterpolation | undefined>(randomAnimation);
+	const [counter, setCounter] = useState(0);
+
+	useEffect(() => {
+		const id = setTimeout(() => {
+			setCounter(counter + 1);
+			setAnimation(randomAnimation);
+		}, 2000);
+		return () => {
+			clearTimeout(id);
+		};
+	}, [counter]);
+
 	return (
-		<Card>
+		<Card animation={animation}>
 			<Image
 				src={props.src}
-				style={{ width: props.size.w, height: props.size.h }}
+				style={{
+					width: props.size.w,
+					height: props.size.h,
+				}}
 			></Image>
 		</Card>
 	);
