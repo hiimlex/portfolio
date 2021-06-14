@@ -10,7 +10,7 @@ export default createGlobalStyle`
 
   body {
     font-size: 62.5%;
-    background: #2A2A2A;
+    background: ${(props) => props.theme.colors.background};
     height: 100vh;
     width: 100vw;
     font-family: "Poppins", sans-serif;
@@ -23,6 +23,4 @@ export default createGlobalStyle`
    -moz-user-select: none; /* Firefox */
    -ms-user-select: none; /* Internet Explorer/Edge */
   }
-
-  
 `;

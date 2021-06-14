@@ -9,12 +9,10 @@ export const Content = styled.div`
 	flex-direction: column;
 	font-size: 1.2rem;
 	text-align: center;
-	color: #fff;
+	color: ${(props) => props.theme.colors.text};
 	padding: 24px;
 
-	p{
+	p {
 		margin-top: 18px;
 	}
-
 `;
-

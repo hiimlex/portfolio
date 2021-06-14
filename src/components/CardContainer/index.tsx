@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import useWindowSize from "../../utils/windowSize";
@@ -7,68 +8,23 @@ import { Container } from "./styles";
 const CardContainer: React.FC = () => {
 	const [cards, setCards] = useState<Card[] | []>([]);
 	const [width, height] = useWindowSize();
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	const [grid, setGrid] = useState<Grid>({
-		column: 4,
-		row: 3,
-	});
+
 	const [counter, setCounter] = useState(0);
-	const handleGrid = React.useCallback(async () => {
-		let row;
-		let column;
-		let w = await width;
-		let h = await height;
 
-		if (w === 0 || h === 0) {
-			w = window.innerWidth;
-			h = window.innerHeight;
-		}
+	const getList = React.useCallback(async (page: number) => {
+		let data: Image[] = [];
+		await axios
+			.get(`https://picsum.photos/v2/list?page=${page}&limit=${20}`)
+			.then((response) => {
+				data = response.data;
+			})
+			.catch((err) => {
+				console.error(err);
+				return getList(page - 2);
+			});
 
-		if (w > 1400) {
-			column = 5;
-		} else if (w <= 1400 && w >= 980) {
-			column = 4;
-		} else if (w <= 980 && w >= 580) {
-			column = 3;
-		} else if (w <= 580) {
-			column = 1;
-		}
-
-		if (h >= 1200) {
-			row = 4;
-		} else if (h <= 1200 && h >= 720) {
-			row = 3;
-		} else if (h <= 720) {
-			row = 3;
-		}
-
-		if (column && row) {
-			setGrid({ column, row });
-		}
-	}, [width, height]);
-
-	const getList = React.useCallback(
-		async (page: number) => {
-			await handleGrid();
-			let data: Image[] = [];
-			await axios
-				.get(
-					`https://picsum.photos/v2/list?page=${page}&limit=${
-						grid.column * grid.row
-					}`
-				)
-				.then((response) => {
-					data = response.data;
-				})
-				.catch((err) => {
-					console.error(err);
-					return getList(page - 10);
-				});
-			return data;
-		},
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[grid.column, grid.row]
-	);
+		return data;
+	}, []);
 
 	const getRandom = React.useCallback(
 		async (width: number, height: number) => {
@@ -97,8 +53,8 @@ const CardContainer: React.FC = () => {
 	);
 
 	const createCard = React.useCallback(async () => {
-		const cardWidth = width / grid.column - 60;
-		const cardHeight = height / grid.row - 60;
+		const cardWidth = (await width) / 4 - 60;
+		const cardHeight = (await height) / 3.5 - 60;
 		let src;
 		if (cardWidth > 120 && cardHeight > 80) {
 			await getRandom(cardWidth, cardHeight).then((value) => {
@@ -112,42 +68,42 @@ const CardContainer: React.FC = () => {
 		};
 
 		return card;
-	}, [width, grid.column, grid.row, height, getRandom]);
+	}, [width, height, getRandom]);
 
 	const createList = React.useCallback(async () => {
-		const cardWidth = (await (width / grid.column)) - 60;
-		const cardHeight = (await (height / grid.row)) - 60;
+		const cardWidth = (await (width / 4)) - 60;
+		const cardHeight = (await (height / 3.5)) - 60;
 
-		if (cardWidth > 120 && cardHeight > 80) {
-			const list = await getList(
-				Number(Math.floor(Math.random() * 100).toFixed())
-			);
+		const list = await getList(
+			Number(Math.floor(Math.random() * 30).toFixed())
+		);
 
-			const cardList: Card[] = [];
+		const cardList: Card[] = [];
 
-			list.forEach((el: Image) => {
-				const card: Card = {
-					size: { w: cardWidth, h: cardHeight },
-					src: el.download_url,
-				};
-				cardList.push(card);
-			});
+		list.forEach((el: Image) => {
+			const card: Card = {
+				size: { w: cardWidth, h: cardHeight },
+				src: el.download_url,
+			};
+			cardList.push(card);
+		});
 
-			return cardList;
-		}
-	}, [getList, grid.column, grid.row, height, width]);
+		return cardList;
+	}, [getList, height, width]);
 
-	const generateCardList = React.useCallback(async () => {
-		if (cards.length !== grid.column * grid.row) {
+	const generateCardList: any = React.useCallback(async () => {
+		if (cards.length !== 20) {
 			const list = await createList();
 			if (list && list.length > 0) {
 				setCards(list);
+			} else {
+				return generateCardList();
 			}
 		}
-	}, [cards.length, createList, grid.column, grid.row]);
+	}, [cards.length, createList]);
 
 	const generateRandomCard = React.useCallback(async () => {
-		const index = Math.floor(Math.random() * (grid.column * grid.row) - 1);
+		const index = Math.floor(Math.random() * 20 - 1);
 		if (index >= 0 && index <= 11) {
 			const card: Card = await createCard();
 			if (card && typeof card.src !== "undefined" && card.src) {
@@ -160,35 +116,17 @@ const CardContainer: React.FC = () => {
 				});
 			}
 		}
-	}, [grid.column, grid.row, createCard]);
-
-	const destroyCardList = React.useCallback(() => {
-		if (cards.length > 0) {
-			setCards([]);
-		}
-	}, [cards.length]);
+	}, [createCard]);
 
 	useEffect(() => {
-		if (width && height) {
-			handleGrid();
-			destroyCardList();
-			generateCardList();
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [width, height]);
+		generateCardList();
+	}, []);
 
 	useEffect(() => {
-		if (cards.length !== grid.column * grid.row) {
+		if (cards.length !== 20) {
 			generateRandomCard();
 		}
-	}, [cards.length, generateRandomCard, grid.column, grid.row]);
-
-	useEffect(() => {
-		if (width !== 0) {
-			generateCardList();
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [cards.length, generateRandomCard]);
 
 	useEffect(() => {
 		const id = setTimeout(() => {
@@ -198,13 +136,10 @@ const CardContainer: React.FC = () => {
 		return () => {
 			clearTimeout(id);
 		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [counter]);
 
 	return (
-		<Container
-			style={{ gridTemplateColumns: `repeat(${grid.column}, 1fr)` }}
-		>
+		<Container>
 			{cards.map((card: Card | any, key: number) => {
 				return <RandomCard key={key} src={card.src} size={card.size} />;
 			})}
@@ -215,11 +150,6 @@ const CardContainer: React.FC = () => {
 interface Card {
 	size: Size;
 	src: any;
-}
-
-interface Grid {
-	column: number;
-	row: number;
 }
 
 interface Size {

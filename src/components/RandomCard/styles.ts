@@ -15,7 +15,7 @@ export const Card = styled.div<StyledProps>`
 	border-radius: 8px !important;
 
 	&:hover {
-		box-shadow: 4px 4px 48px rgba(0, 0, 0, 0.6);
+		box-shadow: 2px 2px 24px ${(props) => props.theme.colors.shadow};
 	}
 `;
 

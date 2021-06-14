@@ -1,28 +1,36 @@
 import React from "react";
-import MainContent from "./components/MainContent";
-import GlobalStyle from "./styles/global";
+import { ThemeProvider } from "styled-components";
 import CardContainer from "./components/CardContainer";
-
-import Content from "./styles/content";
-import useWindowSize from "./utils/windowSize";
+import MainContent from "./components/MainContent";
 import MobileAdvice from "./components/MobileAdvice";
+import Content from "./styles/content";
+import GlobalStyle from "./styles/global";
+import dark from "./styles/themes/dark";
+import light from "./styles/themes/light";
+import usePersistedState from "./utils/usePersistedState";
+import useWindowSize from "./utils/windowSize";
 
 const App = () => {
-	const [width, height] = useWindowSize();
+	const [width] = useWindowSize();
+	const [theme, setTheme] = usePersistedState("theme", dark);
+
+	const toggleTheme = () => {
+		setTheme(theme.title === "dark" ? light : dark);
+	};
 
 	return (
-		<>
+		<ThemeProvider theme={theme}>
 			<GlobalStyle />
 
 			{width > 420 && (
 				<Content>
-					<MainContent />
+					<MainContent toggleTheme={toggleTheme} />
 					<CardContainer />
 				</Content>
 			)}
 
 			{width < 420 && <MobileAdvice></MobileAdvice>}
-		</>
+		</ThemeProvider>
 	);
 };
 

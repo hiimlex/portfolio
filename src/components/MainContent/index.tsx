@@ -1,44 +1,42 @@
-import React, { useState } from "react";
-import { IoMdSunny } from "react-icons/io";
+import React, { useContext } from "react";
 import { BsMoon } from "react-icons/bs";
+import { IoMdSunny } from "react-icons/io";
+import { ThemeContext } from "styled-components";
 import {
-  Container,
-  Logo,
-  Shadow,
-  Subtitle,
-  Title,
-  ThemeSwitch,
+	Container,
+	Logo,
+	Shadow,
+	Subtitle,
+	ThemeSwitch,
+	Title,
 } from "./styles";
 
-type THEME = "dark" | "light";
+interface Props {
+	toggleTheme(): void;
+}
 
-const MainContent: React.FC = () => {
-  const [theme, setTheme] = useState<THEME>("dark");
+const MainContent: React.FC<Props> = ({ toggleTheme }) => {
+	const theme = useContext(ThemeContext);
 
-  const handleTheme = () => {
-    if (theme === "dark") {
-      setTheme("light");
-    } else if (theme === "light") {
-      setTheme("dark");
-    }
-  };
-
-  return (
-    <Container>
-      <ThemeSwitch onClick={handleTheme}>
-        {theme === "dark" ? (
-          <IoMdSunny color={"#363636"} size={20}></IoMdSunny>
-        ) : (
-          <BsMoon color={"#363636"} size={20}></BsMoon>
-        )}
-      </ThemeSwitch>
-      <Logo>
-        <Title>LeUX</Title>
-        <Shadow>LeUX</Shadow>
-      </Logo>
-      <Subtitle>Creative Portfolio's</Subtitle>
-    </Container>
-  );
+	return (
+		<Container>
+			<ThemeSwitch onClick={toggleTheme}>
+				{theme.title === "dark" ? (
+					<IoMdSunny
+						color={theme.colors.contrast}
+						size={20}
+					></IoMdSunny>
+				) : (
+					<BsMoon color={theme.colors.contrast} size={20}></BsMoon>
+				)}
+			</ThemeSwitch>
+			<Logo>
+				<Title>LeUX</Title>
+				<Shadow>LeUX</Shadow>
+			</Logo>
+			<Subtitle>Creative Portfolio's</Subtitle>
+		</Container>
+	);
 };
 
 export default MainContent;
