@@ -13,6 +13,21 @@ export const Container = styled.div`
   z-index: 999999;
   /* Deus me perdoe pelos crimes cometidos acima */
   position: relative;
+
+  @media only screen and (max-width: 768px){
+	  width: 80vw;
+
+	  h1 {
+		font-size: 3rem;
+		line-height: 3srem;
+	  }
+
+	  h4 {
+		  font-size: 1.2rem;
+		  line-height: 1.2rem;
+	  }
+
+  }
 `;
 
 export const Logo = styled.div`

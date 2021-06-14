@@ -13,6 +13,10 @@ export const Card = styled.div<StyledProps>`
 	width: fit-content;
 	height: fit-content;
 	border-radius: 8px !important;
+
+	&:hover {
+		box-shadow: 4px 4px 48px rgba(0, 0, 0, 0.6);
+	}
 `;
 
 export const Image = styled.img`
@@ -21,6 +25,7 @@ export const Image = styled.img`
 	transition: all 0.5s ease-in-out;
 	cursor: pointer;
 	transform: inherit;
+	border-radius: 8px !important;
 
 	&:hover {
 		transform: scale(1.4);
