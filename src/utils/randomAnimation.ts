@@ -7,7 +7,7 @@ const animations: Animations[] = ["flip", "mirror"];
 const flip = css`
 	transform-style: preserve-3d;
 	animation: flip 1s forwards;
-	animation-delay: 1s;
+	animation-delay: 1.5s;
 
 	@keyframes flip {
 		from {
@@ -19,10 +19,15 @@ const flip = css`
 	}
 `;
 
+export const clearAnimation = css`
+	animation: none;
+	transform: inherit;
+`;
+
 const mirror = css`
 	transform: rotateX(0deg);
 	animation: mirror 1s forwards;
-	animation-delay: 1s;
+	animation-delay: 1.5s;
 
 	@keyframes mirror {
 		from {

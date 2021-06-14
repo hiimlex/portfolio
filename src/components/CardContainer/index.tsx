@@ -123,11 +123,48 @@ const CardContainer: React.FC = () => {
 		}
 	}, [grid.column, grid.row, createCard]);
 
+	const handleGrid = async () => {
+		let row;
+		let column;
+
+		if (width > 1400) {
+			column = 5;
+		} else if (width <= 1400 && width >= 1200) {
+			column = 4;
+		} else if (width <= 1200 && width >= 992) {
+			column = 4;
+		} else if (width >= 992 && width >= 768) {
+			column = 3;
+		} else if (width >= 768 && width >= 576) {
+			column = 2;
+		} else if (width <= 576) {
+			column = 1;
+		}
+
+		if (height > 1200) {
+			row = 4;
+		} else if (width <= 1200 && width >= 900) {
+			row = 3;
+		} else if (width <= 900 && width >= 560) {
+			row = 2;
+		}
+
+		if (column && row) {
+			setGrid({ column, row });
+		}
+
+		setGrid({ column: 4, row: 3 });
+	};
+
 	useEffect(() => {
+		if (cards.length !== 12) {
+			generateRandomCard();
+		}
+	}, [cards.length, generateRandomCard]);
+
+	useEffect(() => {
+		handleGrid();
 		generateCardList();
-
-		// Não sei pq mas ele n aceita 2ms :)
-
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 

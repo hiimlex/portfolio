@@ -12,7 +12,7 @@ export const Card = styled.div<StyledProps>`
 	overflow: hidden;
 	width: fit-content;
 	height: fit-content;
-	border-radius: 8px;
+	border-radius: 8px !important;
 `;
 
 export const Image = styled.img`

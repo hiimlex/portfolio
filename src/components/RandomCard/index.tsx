@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FlattenSimpleInterpolation } from "styled-components";
-import randomAnimation from "../../utils/randomAnimation";
+import randomAnimation, { clearAnimation } from "../../utils/randomAnimation";
 import { Card, Image } from "./styles";
 
 interface Props {
@@ -17,19 +17,37 @@ const RandomCard: React.FC<Props> = (props) => {
 	const [animation, setAnimation] =
 		useState<FlattenSimpleInterpolation | undefined>(randomAnimation);
 	const [counter, setCounter] = useState(0);
+	const [stopAnimation, setStopAnimation] = useState(false);
 
 	useEffect(() => {
 		const id = setTimeout(() => {
 			setCounter(counter + 1);
-			setAnimation(randomAnimation);
+			if (!stopAnimation) {
+				setAnimation(randomAnimation);
+			}
 		}, 2500);
 		return () => {
 			clearTimeout(id);
 		};
-	}, [counter]);
+	}, [counter, stopAnimation]);
+
+	const handleAnimation = (stop: boolean) => {
+		if (stop) {
+			setAnimation(clearAnimation);
+		}
+		setStopAnimation(stop);
+	};
 
 	return (
-		<Card animation={animation}>
+		<Card
+			animation={animation}
+			onMouseEnter={() => {
+				handleAnimation(true);
+			}}
+			onMouseLeave={() => {
+				handleAnimation(false);
+			}}
+		>
 			<Image
 				src={props.src}
 				style={{
