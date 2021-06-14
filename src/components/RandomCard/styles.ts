@@ -26,6 +26,7 @@ export const Image = styled.img`
 	cursor: pointer;
 	transform: inherit;
 	border-radius: 8px !important;
+	image-rendering: optimizeSpeed;
 
 	&:hover {
 		transform: scale(1.4);
