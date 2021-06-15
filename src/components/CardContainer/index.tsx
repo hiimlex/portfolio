@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import useWindowSize from "../../utils/windowSize";
 import RandomCard from "../RandomCard";
+import { Project, randomProject } from "../RandomProject";
 import { Container } from "./styles";
 
 const CardContainer: React.FC = () => {
@@ -104,16 +105,38 @@ const CardContainer: React.FC = () => {
 
 	const generateRandomCard = React.useCallback(async () => {
 		const index = Math.floor(Math.random() * 20 - 1);
-		if (index >= 0 && index <= 11) {
-			const card: Card = await createCard();
-			if (card && typeof card.src !== "undefined" && card.src) {
-				setCards((cards) => {
-					return [
-						...cards.slice(0, index),
-						card,
-						...cards.slice(index, cards.length - 1),
-					];
-				});
+		if (index >= 0 && index <= 20) {
+			const fun = Math.floor(Math.random() * 2);
+			if (fun === 0) {
+				const card: Card = await createCard();
+				if (card && typeof card.src !== "undefined" && card.src) {
+					setCards((cards) => {
+						return [
+							...cards.slice(0, index),
+							card,
+							...cards.slice(index, cards.length - 1),
+						];
+					});
+				}
+			} else if (fun === 1) {
+				const card: Card = await createCard();
+				const project: Project = randomProject();
+
+				card.src =
+					project.project[
+						Math.floor(Math.random() * project.project.length)
+					].url;
+
+				if (card && typeof card.src !== "undefined" && card.src) {
+					console.log(card);
+					setCards((cards) => {
+						return [
+							...cards.slice(0, index),
+							card,
+							...cards.slice(index, cards.length - 1),
+						];
+					});
+				}
 			}
 		}
 	}, [createCard]);

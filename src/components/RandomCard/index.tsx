@@ -18,6 +18,7 @@ const RandomCard: React.FC<Props> = (props) => {
 		useState<FlattenSimpleInterpolation | undefined>(randomAnimation);
 	const [counter, setCounter] = useState(0);
 	const [stopAnimation, setStopAnimation] = useState(false);
+	const [local, setLocal] = useState(false);
 
 	useEffect(() => {
 		const id = setTimeout(() => {
@@ -38,6 +39,12 @@ const RandomCard: React.FC<Props> = (props) => {
 		setStopAnimation(stop);
 	};
 
+	useEffect(() => {
+		if (String(props.src).match("../")) {
+			setLocal(true);
+		}
+	}, [props.src]);
+
 	return (
 		<Card
 			animation={animation}
@@ -49,7 +56,7 @@ const RandomCard: React.FC<Props> = (props) => {
 			}}
 		>
 			<Image
-				src={props.src}
+				src={local ? process.env.PUBLIC_URL + props.src : props.src}
 				style={{
 					width: props.size.w,
 					height: props.size.h,
