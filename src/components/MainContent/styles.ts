@@ -10,9 +10,9 @@ export const Container = styled.div`
 	border-radius: 12px;
 	text-align: center;
 	padding: 54px;
-	z-index: 999999;
+	position: absolute;
 	/* Deus me perdoe pelos crimes cometidos acima */
-	position: relative;
+	z-index: 1;
 
 	@media only screen and (max-width: 768px) {
 		width: 80vw;

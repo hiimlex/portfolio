@@ -13,7 +13,7 @@ const CardContainer: React.FC = () => {
 	const [counter, setCounter] = useState(0);
 
 	const getList = React.useCallback(async (page: number) => {
-		let data: Image[] = [];
+		let data: ImagePicsum[] = [];
 		await axios
 			.get(`https://picsum.photos/v2/list?page=${page}&limit=${20}`)
 			.then((response) => {
@@ -54,8 +54,8 @@ const CardContainer: React.FC = () => {
 	);
 
 	const createCard = React.useCallback(async () => {
-		const cardWidth = (await width) / 4 - 60;
-		const cardHeight = (await height) / 3.5 - 60;
+		let cardWidth = (await width) / 4 - 60;
+		let cardHeight = (await height) / 4 - 60;
 		let src;
 		if (cardWidth > 120 && cardHeight > 80) {
 			await getRandom(cardWidth, cardHeight).then((value) => {
@@ -67,13 +67,14 @@ const CardContainer: React.FC = () => {
 			size: { w: cardWidth, h: cardHeight },
 			src: src,
 		};
-
 		return card;
 	}, [width, height, getRandom]);
 
 	const createList = React.useCallback(async () => {
-		const cardWidth = (await (width / 4)) - 60;
-		const cardHeight = (await (height / 3.5)) - 60;
+		let cardWidth = (await (width / 4)) - 60;
+		let cardHeight = (await (height / 3.5)) - 60;
+
+		const image = document.createElement("img");
 
 		const list = await getList(
 			Number(Math.floor(Math.random() * 30).toFixed())
@@ -81,11 +82,19 @@ const CardContainer: React.FC = () => {
 
 		const cardList: Card[] = [];
 
-		list.forEach((el: Image) => {
+		list.forEach((el: ImagePicsum) => {
 			const card: Card = {
 				size: { w: cardWidth, h: cardHeight },
 				src: el.download_url,
 			};
+
+			image.src = el.download_url;
+
+			if (image.width > 0 || image.height > 0) {
+				cardWidth = image.width || cardWidth;
+				cardHeight = image.height || cardHeight;
+			}
+
 			cardList.push(card);
 		});
 
@@ -121,13 +130,20 @@ const CardContainer: React.FC = () => {
 			} else if (fun === 1) {
 				const card: Card = await createCard();
 				const project: Project = randomProject();
-
 				card.src =
 					project.project[
 						Math.floor(Math.random() * project.project.length)
 					].url;
+				card.description = project.description;
+				card.title = project.name;
 
 				if (card && typeof card.src !== "undefined" && card.src) {
+					if (card.size.w > card.size.h) {
+						card.size.h = card.size.w * 0.9;
+					} else {
+						card.size.w = card.size.h * 0.9;
+					}
+
 					console.log(card);
 					setCards((cards) => {
 						return [
@@ -164,7 +180,15 @@ const CardContainer: React.FC = () => {
 	return (
 		<Container>
 			{cards.map((card: Card | any, key: number) => {
-				return <RandomCard key={key} src={card.src} size={card.size} />;
+				return (
+					<RandomCard
+						key={key}
+						src={card.src}
+						size={card.size}
+						title={card.title}
+						description={card.description}
+					/>
+				);
 			})}
 		</Container>
 	);
@@ -173,6 +197,8 @@ const CardContainer: React.FC = () => {
 interface Card {
 	size: Size;
 	src: any;
+	description?: string;
+	title?: string;
 }
 
 interface Size {
@@ -180,7 +206,7 @@ interface Size {
 	h: number;
 }
 
-interface Image {
+interface ImagePicsum {
 	id: number;
 	width: number;
 	heigh: number;

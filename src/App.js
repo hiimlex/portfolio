@@ -36,7 +36,7 @@ const App = () => {
 			{width > 420 && (
 				<Content>
 					<MainContent toggleTheme={toggleTheme} />
-					<CardContainer />
+					<CardContainer></CardContainer>
 				</Content>
 			)}
 
