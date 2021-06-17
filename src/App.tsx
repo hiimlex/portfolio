@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import CardContainer from "./components/CardContainer";
 import MainContent from "./components/MainContent";
 import MobileAdvice from "./components/MobileAdvice";
+import Modal from "./components/Modal";
 import Content from "./styles/content";
 import GlobalStyle from "./styles/global";
 import dark from "./styles/themes/dark";
@@ -10,9 +11,9 @@ import light from "./styles/themes/light";
 import usePersistedState from "./utils/usePersistedState";
 import useWindowSize from "./utils/windowSize";
 
-const App = () => {
+function App() {
 	const [width] = useWindowSize();
-	const [theme, setTheme] = usePersistedState("theme", dark);
+	const [theme, setTheme] = usePersistedState<any>("theme", dark);
 
 	const toggleTheme = () => {
 		setTheme(theme.title === "dark" ? light : dark);
@@ -41,8 +42,10 @@ const App = () => {
 			)}
 
 			{width < 420 && <MobileAdvice></MobileAdvice>}
+
+			<Modal />
 		</ThemeProvider>
 	);
-};
+}
 
 export default App;

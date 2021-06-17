@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { connect, ConnectedProps } from "react-redux";
 import { FlattenSimpleInterpolation } from "styled-components";
+import { showModal } from "../../store/actions";
 import randomAnimation, { clearAnimation } from "../../utils/randomAnimation";
+import { getProjectByName } from "../RandomProject";
 import { Card, Image } from "./styles";
 
 interface Props {
 	size: Size;
 	src: any;
-	description?: string;
 	title?: string;
 }
 
@@ -15,7 +17,15 @@ interface Size {
 	h: number;
 }
 
-const RandomCard: React.FC<Props> = (props) => {
+const mapDispatchToProps = {
+	dispachShowModal: showModal,
+};
+
+const connector = connect(undefined, mapDispatchToProps);
+
+type RandomCardProps = Props & ConnectedProps<typeof connector>;
+
+const RandomCard: React.FC<RandomCardProps> = (props) => {
 	const [counter, setCounter] = useState<number>(0);
 
 	const [animation, setAnimation] =
@@ -25,7 +35,8 @@ const RandomCard: React.FC<Props> = (props) => {
 	const [local, setLocal] = useState<boolean>(false);
 
 	const [hasTitle, setHasTitle] = useState<boolean>(false);
-	const [hasDesc, setHasDesc] = useState<boolean>(false);
+
+	const { dispachShowModal } = props;
 
 	const handleAnimation = (stop: boolean) => {
 		if (stop) {
@@ -34,9 +45,10 @@ const RandomCard: React.FC<Props> = (props) => {
 		setStopAnimation(stop);
 	};
 
-	const openModalInfo = (project: Props) => {
-		if (project) {
-			console.log(project);
+	const openModalInfo = (proj: Props) => {
+		if (proj && proj.title) {
+			const project = getProjectByName(proj.title);
+			dispachShowModal(project);
 		}
 	};
 
@@ -61,17 +73,6 @@ const RandomCard: React.FC<Props> = (props) => {
 	}, [props.src]);
 
 	useEffect(() => {
-		if (
-			props.description !== "" &&
-			typeof props.description !== "undefined"
-		) {
-			setHasDesc(true);
-		} else {
-			setHasDesc(false);
-		}
-	}, [props.description]);
-
-	useEffect(() => {
 		if (props.title !== "" && typeof props.title !== "undefined") {
 			setHasTitle(true);
 		} else {
@@ -89,18 +90,14 @@ const RandomCard: React.FC<Props> = (props) => {
 				onMouseLeave={() => {
 					handleAnimation(false);
 				}}
-				hover={hasTitle && hasDesc}
+				hover={hasTitle}
 				onClick={() => {
 					openModalInfo(props);
 				}}
 			>
 				<Image
-					hover={hasTitle && hasDesc}
+					hover={hasTitle}
 					src={local ? process.env.PUBLIC_URL + props.src : props.src}
-					style={{
-						width: props.size.w,
-						height: props.size.h,
-					}}
 				></Image>
 			</Card>
 		</>
@@ -114,4 +111,4 @@ RandomCard.defaultProps = {
 	},
 };
 
-export default RandomCard;
+export default connector(RandomCard);

@@ -30,10 +30,10 @@ export const Card = styled.div<StyledProps>`
 export const Image = styled.img<HoverProps>`
 	width: 100%;
 	height: auto;
+	object-fit: cover;
 	transition: all 0.5s ease-in-out;
 	transform: inherit;
 	border-radius: 8px !important;
-	image-rendering: optimizeSpeed;
 
 	${(props) => {
 		if (props.hover) {
@@ -44,30 +44,4 @@ export const Image = styled.img<HoverProps>`
 			}`;
 		}
 	}}
-`;
-
-export const OutsideModal = styled.div`
-	width: 100vw;
-	height: 100vh;
-	background: rgba(0, 0, 0, 0.2);
-	overflow: hidden;
-	position: absolute;
-	//do not do that please i'm beggin u
-	//SORRY MOM
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-`;
-
-export const Modal = styled.div`
-	width: 92vw;
-	height: auto;
-	padding: 24px;
-
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	background: ${(props) => props.theme.colors.background};
 `;

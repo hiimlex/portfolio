@@ -34,7 +34,7 @@ const CardContainer: React.FC = () => {
 				.get(
 					`https://picsum.photos/${Number(width).toFixed()}/${Number(
 						height
-					).toFixed()}`,
+					).toFixed()}/`,
 					{ responseType: "arraybuffer" }
 				)
 				.then((response) => {
@@ -72,9 +72,7 @@ const CardContainer: React.FC = () => {
 
 	const createList = React.useCallback(async () => {
 		let cardWidth = (await (width / 4)) - 60;
-		let cardHeight = (await (height / 3.5)) - 60;
-
-		const image = document.createElement("img");
+		let cardHeight = (await (height / 3)) - 60;
 
 		const list = await getList(
 			Number(Math.floor(Math.random() * 30).toFixed())
@@ -87,13 +85,6 @@ const CardContainer: React.FC = () => {
 				size: { w: cardWidth, h: cardHeight },
 				src: el.download_url,
 			};
-
-			image.src = el.download_url;
-
-			if (image.width > 0 || image.height > 0) {
-				cardWidth = image.width || cardWidth;
-				cardHeight = image.height || cardHeight;
-			}
 
 			cardList.push(card);
 		});
@@ -118,6 +109,12 @@ const CardContainer: React.FC = () => {
 			const fun = Math.floor(Math.random() * 2);
 			if (fun === 0) {
 				const card: Card = await createCard();
+				const image = new Image();
+				image.src = card.src;
+
+				card.size.w = image.width;
+				card.size.h = image.height;
+
 				if (card && typeof card.src !== "undefined" && card.src) {
 					setCards((cards) => {
 						return [
@@ -138,13 +135,16 @@ const CardContainer: React.FC = () => {
 				card.title = project.name;
 
 				if (card && typeof card.src !== "undefined" && card.src) {
-					if (card.size.w > card.size.h) {
-						card.size.h = card.size.w * 0.9;
+					const image = new Image();
+					image.src = process.env.PUBLIC_URL + card.src;
+
+					if (image.width > image.height) {
+						card.size.h = card.size.h * 1.3;
 					} else {
-						card.size.w = card.size.h * 0.9;
+						card.size.w = image.width / 2;
+						card.size.h = image.height / 2;
 					}
 
-					console.log(card);
 					setCards((cards) => {
 						return [
 							...cards.slice(0, index),
@@ -179,14 +179,13 @@ const CardContainer: React.FC = () => {
 
 	return (
 		<Container>
-			{cards.map((card: Card | any, key: number) => {
+			{cards.map((card: Card, key: number) => {
 				return (
 					<RandomCard
 						key={key}
 						src={card.src}
 						size={card.size}
 						title={card.title}
-						description={card.description}
 					/>
 				);
 			})}
