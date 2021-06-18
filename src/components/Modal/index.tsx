@@ -157,6 +157,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 															el.url
 														}
 														style={{
+															borderRadius: '12px',
 															width:
 																orientation ===
 																"landscape"
