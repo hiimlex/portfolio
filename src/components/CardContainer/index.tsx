@@ -111,19 +111,28 @@ const CardContainer: React.FC = () => {
 				const card: Card = await createCard();
 				const image = new Image();
 				image.src = card.src;
+				image.onload = () => {
+					if (image.width > 0 && image.height > 0) {
+						card.size.w = image.width * 0.8;
+						card.size.h = image.height * 0.8;
+					}
 
-				card.size.w = image.width;
-				card.size.h = image.height;
-
-				if (card && typeof card.src !== "undefined" && card.src) {
-					setCards((cards) => {
-						return [
-							...cards.slice(0, index),
-							card,
-							...cards.slice(index, cards.length - 1),
-						];
-					});
-				}
+					if (
+						card &&
+						typeof card.src !== "undefined" &&
+						card.src &&
+						card.size.w > 0 &&
+						card.size.h > 0
+					) {
+						setCards((cards) => {
+							return [
+								...cards.slice(0, index),
+								card,
+								...cards.slice(index, cards.length - 1),
+							];
+						});
+					}
+				};
 			} else if (fun === 1) {
 				const card: Card = await createCard();
 				const project: Project = randomProject();
@@ -134,26 +143,34 @@ const CardContainer: React.FC = () => {
 				card.description = project.description;
 				card.title = project.name;
 
-				if (card && typeof card.src !== "undefined" && card.src) {
-					const image = new Image();
-					image.src = process.env.PUBLIC_URL + card.src;
+				const image: HTMLImageElement = new Image();
+				image.src = process.env.PUBLIC_URL + card.src;
+				image.onload = () => {
+					if (
+						card &&
+						typeof card.src !== "undefined" &&
+						card.src &&
+						image &&
+						image.width > 0 &&
+						image.height > 0
+					) {
+						if (image.width > image.height) {
+							card.size.w = image.width / 4;
+							card.size.h = image.height / 4;
+						} else if (image.width < image.height) {
+							card.size.w = image.width / 2.4;
+							card.size.h = image.height / 2.4;
+						}
 
-					if (image.width > image.height) {
-						card.size.w = card.size.w * 0.9;
-						card.size.h = card.size.h * 1.3;
-					} else {
-						card.size.w = image.width / 3;
-						card.size.h = image.height / 3;
+						setCards((cards) => {
+							return [
+								...cards.slice(0, index),
+								card,
+								...cards.slice(index, cards.length - 1),
+							];
+						});
 					}
-
-					setCards((cards) => {
-						return [
-							...cards.slice(0, index),
-							card,
-							...cards.slice(index, cards.length - 1),
-						];
-					});
-				}
+				};
 			}
 		}
 	}, [createCard]);

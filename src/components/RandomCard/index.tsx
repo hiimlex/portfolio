@@ -98,6 +98,7 @@ const RandomCard: React.FC<RandomCardProps> = (props) => {
 				<Image
 					hover={hasTitle}
 					src={local ? process.env.PUBLIC_URL + props.src : props.src}
+					style={{ width: props.size.w, height: props.size.h }}
 				></Image>
 			</Card>
 		</>

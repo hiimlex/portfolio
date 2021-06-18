@@ -10,10 +10,10 @@ const projects: Project[] = [];
 const tourApp: Project = {
 	name: "CaririMob",
 	project: [
-		{ title: "home", url: "/assets/tour-app/HOME.jpg" },
-		{ title: "login", url: "/assets/tour-app/LOGIN.jpg" },
-		{ title: "points", url: "/assets/tour-app/POINTS.jpg" },
-		{ title: "registrar", url: "/assets/tour-app/REGISTRAR.jpg" },
+		{ title: "home", url: "/assets/tour-app/HOME.jpeg" },
+		{ title: "login", url: "/assets/tour-app/LOGIN.jpeg" },
+		{ title: "points", url: "/assets/tour-app/POINTS.jpeg" },
+		{ title: "registrar", url: "/assets/tour-app/REGISTRAR.jpeg" },
 	],
 	description:
 		"Aplicativo/App - Em construção, o intuito dessa aplicação é conectar turistas/residentes/moradores da região, à meios de transportes de locomoção municipais e intermunicipais.",
@@ -23,14 +23,14 @@ const tourApp: Project = {
 const agroMais: Project = {
 	name: "Agro+",
 	project: [
-		{ title: "sobre-1", url: "/assets/agro-mais/sobre-1.jpg" },
-		{ title: "sobre-2", url: "/assets/agro-mais/sobre-2.jpg" },
-		{ title: "sobre-3", url: "/assets/agro-mais/sobre-3.jpg" },
-		{ title: "sobre-4", url: "/assets/agro-mais/sobre-4.jpg" },
-		{ title: "Agro-1", url: "/assets/agro-mais/Agro-1.png" },
-		{ title: "Agro-2", url: "/assets/agro-mais/Agro-2.png" },
-		{ title: "Agro-3", url: "/assets/agro-mais/Agro-3.png" },
-		{ title: "Agro-4", url: "/assets/agro-mais/Agro-4.png" },
+		{ title: "sobre-1", url: "/assets/agro-mais/sobre-1.jpeg" },
+		{ title: "sobre-2", url: "/assets/agro-mais/sobre-2.jpeg" },
+		{ title: "sobre-3", url: "/assets/agro-mais/sobre-3.jpeg" },
+		{ title: "sobre-4", url: "/assets/agro-mais/sobre-4.jpeg" },
+		{ title: "Agro-1", url: "/assets/agro-mais/Agro-1.jpeg" },
+		{ title: "Agro-2", url: "/assets/agro-mais/Agro-2.jpeg" },
+		{ title: "Agro-3", url: "/assets/agro-mais/Agro-3.jpeg" },
+		{ title: "Agro-4", url: "/assets/agro-mais/Agro-4.jpeg" },
 	],
 	description:
 		"O Agro+Classificados visa auxiliar as atividades de exposição e vendas dos produtos de pequenos agricultores e pecuaristas, tendo em vista que, com frequência, a exposição dos seus produtos limitam-se apenas às feiras livres ou eventos não permanentes. Além disso, o número de clientes que visitam tais feiras é limitado a uma pequena região geográfica, geralmente de moradores de bairros ou cidades circunvizinhas.",
@@ -40,23 +40,40 @@ const agroMais: Project = {
 const caderNet: Project = {
 	name: "CaderNet - Wireframe",
 	project: [
-		{ title: "caderNet-1", url: "/assets/CaderNet/caderNet-1.jpg" },
-		{ title: "caderNet-2", url: "/assets/CaderNet/caderNet-2.jpg" },
-		{ title: "caderNet-3", url: "/assets/CaderNet/caderNet-3.jpg" },
-		{ title: "caderNet-5", url: "/assets/CaderNet/caderNet-5.jpg" },
-		{ title: "caderNet-6", url: "/assets/CaderNet/caderNet-6.jpg" },
-		{ title: "caderNet-7", url: "/assets/CaderNet/caderNet-7.jpg" },
-		{ title: "caderNet-8", url: "/assets/CaderNet/caderNet-8.jpg" },
-		{ title: "caderNet-9", url: "/assets/CaderNet/caderNet-9.jpg" },
-		{ title: "caderNet-10", url: "/assets/CaderNet/caderNet-10.jpg" },
-		{ title: "caderNet-11", url: "/assets/CaderNet/caderNet-11.jpg" },
+		{ title: "caderNet-1", url: "/assets/CaderNet/caderNet-1.jpeg" },
+		{ title: "caderNet-2", url: "/assets/CaderNet/caderNet-2.jpeg" },
+		{ title: "caderNet-3", url: "/assets/CaderNet/caderNet-3.jpeg" },
+		{ title: "caderNet-5", url: "/assets/CaderNet/caderNet-5.jpeg" },
+		{ title: "caderNet-6", url: "/assets/CaderNet/caderNet-6.jpeg" },
+		{ title: "caderNet-7", url: "/assets/CaderNet/caderNet-7.jpeg" },
+		{ title: "caderNet-8", url: "/assets/CaderNet/caderNet-8.jpeg" },
+		{ title: "caderNet-9", url: "/assets/CaderNet/caderNet-9.jpeg" },
+		{ title: "caderNet-10", url: "/assets/CaderNet/caderNet-10.jpeg" },
+		{ title: "caderNet-11", url: "/assets/CaderNet/caderNet-11.jpeg" },
 	],
 	description:
 		"A cadernet seria uma solução idealizada em um teste para propor a revendedoras um sistema de gerenciamento, disponiveis em IOS e Android.",
 	url: "https://www.figma.com/file/3eHme2sO8H22oVwTC5Vwoz/CaderNet?node-id=2%3A0",
 };
 
-projects.push(tourApp, agroMais, caderNet);
+const cargaCheia: Project = {
+	name: "Carga Cheia",
+	project: [
+		{
+			title: "home",
+			url: "/assets/carga-cheia/carga-cheia-1.jpeg",
+		},
+		{
+			title: "home",
+			url: "/assets/carga-cheia/carga-cheia-2.jpeg",
+		},
+	],
+	description:
+		"Este projeto foi idealizado e implementado para o Hackaton da Sabão Juá, realizado em Juazeiro do Norte, com intuito de conectar cargas a transportadoras. ",
+	url: "https://www.figma.com/file/Te0zlXm4mPLH5P8a6lijsh/Hackathon-Sab%C3%A3o-Ju%C3%A1?node-id=28%3A2976",
+};
+
+projects.push(tourApp, agroMais, caderNet, cargaCheia);
 
 export const randomProject = (): Project => {
 	return projects[Math.floor(Math.random() * projects.length)];

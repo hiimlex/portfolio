@@ -45,21 +45,27 @@ const Modal: React.FC<ModalProps> = (props) => {
 	const [can, setCan] = useState(false);
 
 	const handleOrientation: any = () => {
+		setCan(false);
 		if (modal) {
 			const image: HTMLImageElement = new Image();
 			image.src = process.env.PUBLIC_URL + modal.project[index].url;
-
-			if (image && image.width > 0 && image.height > 0) {
-				if (image.width < image.height) {
-					setOrientation("portrait");
-					setCan(true);
+			image.onload = () => {
+				if (image && image.width > 0 && image.height > 0) {
+					if (image.width < image.height) {
+						setOrientation("portrait");
+						setTimeout(() => {
+							setCan(true);
+						}, 800);
+					} else {
+						setOrientation("landscape");
+						setTimeout(() => {
+							setCan(true);
+						}, 800);
+					}
 				} else {
-					setOrientation("landscape");
-					setCan(true);
+					setCan(false);
 				}
-			} else {
-				setCan(false);
-			}
+			};
 		}
 	};
 
@@ -196,11 +202,24 @@ const Modal: React.FC<ModalProps> = (props) => {
 									window.open(modal.url, "blank");
 								}}
 							>
-								Acessar MVP {orientation}
+								Acessar MVP
 							</Button>
 						)}
 					</ModalInfo>
 				</ModalContent>
+			)}
+
+			{!can && (
+				<div className="lds-roller">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
 			)}
 		</Overlay>
 	);
