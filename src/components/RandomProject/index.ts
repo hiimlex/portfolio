@@ -56,7 +56,7 @@ const caderNet: Project = {
 	url: "https://www.figma.com/file/3eHme2sO8H22oVwTC5Vwoz/CaderNet?node-id=2%3A0",
 };
 
-const rellusion: Project = {
+const cargaCheia: Project = {
 	name: "Carga Cheia",
 	project: [
 		{
@@ -69,11 +69,11 @@ const rellusion: Project = {
 		},
 	],
 	description:
-		"Este projeto foi idealizado e implementado para o Hackaton da NASA Space Apps - Consiste em fornecer planetas em Realidade Aumentada, para um ensino mais didático.",
+		"Este projeto foi idealizado e implementado para o Hackaton da Sabão Juá, realizado em Juazeiro do Norte, com intuito de conectar cargas a transportadoras. ",
 	url: "https://github.com/hiimlex/rellusion",
 };
 
-const cargaCheia: Project = {
+const rellusion: Project = {
 	name: "Rellusion",
 	project: [
 		{
@@ -86,11 +86,12 @@ const cargaCheia: Project = {
 		},
 	],
 	description:
-		"Este projeto foi idealizado e implementado para o Hackaton da Sabão Juá, realizado em Juazeiro do Norte, com intuito de conectar cargas a transportadoras. ",
+		"Este projeto foi idealizado e implementado para o Hackaton da NASA Space Apps - Consiste em fornecer planetas em Realidade Aumentada, para um ensino mais didático",
+
 	url: "https://www.figma.com/file/Te0zlXm4mPLH5P8a6lijsh/Hackathon-Sab%C3%A3o-Ju%C3%A1?node-id=28%3A2976",
 };
 
-projects.push(tourApp, agroMais, caderNet, rellusion, cargaCheia);
+projects.push(tourApp, agroMais, caderNet, cargaCheia, rellusion);
 
 export const randomProject = (): Project => {
 	return projects[Math.floor(Math.random() * projects.length)];
