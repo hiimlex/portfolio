@@ -1,18 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-
-import { CSSTransition } from "react-transition-group";
-
 import { MdClose } from "react-icons/md";
-
 import { connect, ConnectedProps } from "react-redux";
+import { CSSTransition } from "react-transition-group";
+import { ThemeContext } from "styled-components";
 import { hideModal } from "../../store/actions";
 import { RootState } from "../../store/reducers";
-
-import { ThemeContext } from "styled-components";
+import "./animations.css";
 import {
 	Button,
 	Carousel,
-	CarouselImage,
 	Close,
 	Description,
 	LeftArrow,
@@ -23,8 +19,6 @@ import {
 	RightArrow,
 	Title,
 } from "./styles";
-
-import "./animations.css";
 
 const mapStateToProps = (state: RootState) => ({
 	modal: state.modal.modal,
@@ -50,17 +44,21 @@ const Modal: React.FC<ModalProps> = (props) => {
 	const [index, setIndex] = useState(0);
 	const [can, setCan] = useState(false);
 
-	const handleOrientation = () => {
+	const handleOrientation: any = () => {
 		if (modal) {
-			const image = new Image();
-			image.src = process.env.PUBLIC_URL + modal.project[0].url;
+			const image: HTMLImageElement = new Image();
+			image.src = process.env.PUBLIC_URL + modal.project[index].url;
 
-			if (image.width < image.height) {
-				setOrientation("portrait");
-				setCan(true);
+			if (image && image.width > 0 && image.height > 0) {
+				if (image.width < image.height) {
+					setOrientation("portrait");
+					setCan(true);
+				} else {
+					setOrientation("landscape");
+					setCan(true);
+				}
 			} else {
-				setOrientation("landscape");
-				setCan(true);
+				setCan(false);
 			}
 		}
 	};
@@ -68,14 +66,19 @@ const Modal: React.FC<ModalProps> = (props) => {
 	useEffect(() => {
 		handleOrientation();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [modal, orientation]);
+	}, [modal, orientation, dispatchHideModal]);
 
 	useEffect(() => {
-		const id = setTimeout(() => {
-			setCounter(counter + 1);
-			if (modal) {
-				if (index >= 0) {
-					if (!clicked) {
+		if (!can) {
+			handleOrientation();
+		}
+
+		if (!clicked) {
+			const id = setTimeout(() => {
+				setCounter(counter + 1);
+
+				if (modal) {
+					if (index >= 0) {
 						if (index >= modal.project.length - 1) {
 							setIndex(0);
 						} else {
@@ -83,16 +86,17 @@ const Modal: React.FC<ModalProps> = (props) => {
 						}
 					}
 				}
-			}
-		}, 2000);
-		return () => {
-			clearTimeout(id);
-		};
-
+			}, 2000);
+			return () => {
+				clearTimeout(id);
+			};
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [counter]);
+	}, [counter, clicked]);
 
 	const onCloseButtonClick = () => {
+		setIndex(0);
+		setCounter(0);
 		dispatchHideModal();
 	};
 
@@ -100,7 +104,7 @@ const Modal: React.FC<ModalProps> = (props) => {
 		setClicked(true);
 		setTimeout(() => {
 			setClicked(false);
-		}, 3000);
+		}, 1000);
 		setIndex(index + prev);
 	};
 
@@ -111,89 +115,93 @@ const Modal: React.FC<ModalProps> = (props) => {
 	return (
 		<Overlay>
 			<OutsideModal onClick={onCloseButtonClick}></OutsideModal>
-			<ModalContent>
-				<Close onClick={onCloseButtonClick}>
-					<MdClose size={24} color={theme.colors.text}></MdClose>
-				</Close>
-				<Carousel>
-					{modal &&
-						can &&
-						modal.project.map(
-							(
-								el: { title: string; url: string },
-								key: number
-							) => {
-								return (
-									<div key={key}>
-										{key === index && (
-											<CSSTransition
-												in={key === index}
-												timeout={{
-													appear: 200,
-													enter: 400,
-													exit: 500,
-												}}
-												classNames="fade-in"
-												unmountOnExit
-											>
-												<CarouselImage
-													alt={el.title}
-													src={
-														process.env.PUBLIC_URL +
-														el.url
-													}
-													style={{
-														width:
-															orientation ===
-															"landscape"
-																? "54vw"
-																: "auto",
-														height:
-															orientation ===
-															"landscape"
-																? "auto"
-																: "28vw",
+			{can && (
+				<ModalContent>
+					<Close onClick={onCloseButtonClick}>
+						<MdClose size={24} color={theme.colors.text}></MdClose>
+					</Close>
+					<Carousel>
+						{modal &&
+							orientation &&
+							can &&
+							modal.project.map(
+								(
+									el: { title: string; url: string },
+									key: number
+								) => {
+									return (
+										<div key={key}>
+											{key === index && (
+												<CSSTransition
+													in={key === index}
+													timeout={{
+														appear: 200,
+														enter: 400,
+														exit: 500,
 													}}
-												></CarouselImage>
-											</CSSTransition>
-										)}
-									</div>
-								);
-							}
+													classNames="fade-in"
+													unmountOnExit
+												>
+													<img
+														alt={el.title}
+														src={
+															process.env
+																.PUBLIC_URL +
+															el.url
+														}
+														style={{
+															width:
+																orientation ===
+																"landscape"
+																	? "54vw"
+																	: "auto",
+															height:
+																orientation ===
+																"landscape"
+																	? "auto"
+																	: "28vw",
+														}}
+													></img>
+												</CSSTransition>
+											)}
+										</div>
+									);
+								}
+							)}
+						{modal && index > 0 && (
+							<LeftArrow
+								onClick={() => {
+									handleNavCarousel(-1);
+								}}
+							>
+								{"<"}
+							</LeftArrow>
 						)}
-					{modal && index > 0 && (
-						<LeftArrow
-							onClick={() => {
-								handleNavCarousel(-1);
-							}}
-						>
-							{"<"}
-						</LeftArrow>
-					)}
-					{modal && index < modal.project.length - 1 && (
-						<RightArrow
-							onClick={() => {
-								handleNavCarousel(1);
-							}}
-						>
-							{">"}
-						</RightArrow>
-					)}
-				</Carousel>
-				<ModalInfo>
-					<Title>{modal.name}</Title>
-					<Description>{modal.description}</Description>
-					{modal.url && (
-						<Button
-							onClick={() => {
-								window.open(modal.url, "blank");
-							}}
-						>
-							Acessar MVP
-						</Button>
-					)}
-				</ModalInfo>
-			</ModalContent>
+						{modal && index < modal.project.length - 1 && (
+							<RightArrow
+								onClick={() => {
+									handleNavCarousel(1);
+								}}
+							>
+								{">"}
+							</RightArrow>
+						)}
+					</Carousel>
+					<ModalInfo>
+						<Title>{modal.name}</Title>
+						<Description>{modal.description}</Description>
+						{modal.url && (
+							<Button
+								onClick={() => {
+									window.open(modal.url, "blank");
+								}}
+							>
+								Acessar MVP {orientation}
+							</Button>
+						)}
+					</ModalInfo>
+				</ModalContent>
+			)}
 		</Overlay>
 	);
 };

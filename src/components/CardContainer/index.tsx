@@ -139,10 +139,11 @@ const CardContainer: React.FC = () => {
 					image.src = process.env.PUBLIC_URL + card.src;
 
 					if (image.width > image.height) {
+						card.size.w = card.size.w * 0.9;
 						card.size.h = card.size.h * 1.3;
 					} else {
-						card.size.w = image.width / 2;
-						card.size.h = image.height / 2;
+						card.size.w = image.width / 3;
+						card.size.h = image.height / 3;
 					}
 
 					setCards((cards) => {

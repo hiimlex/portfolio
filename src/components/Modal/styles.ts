@@ -72,12 +72,6 @@ export const Carousel = styled.div`
 	height: fit-content;
 `;
 
-export const CarouselImage = styled.img`
-	width: 54vw;
-	height: auto;
-	margin: 2px;
-`;
-
 export const ModalInfo = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -110,7 +104,7 @@ export const Description = styled.p`
 
 export const LeftArrow = styled.div`
 	position: absolute;
-	left: 2px;
+	left: 0;
 	top: calc(50% - 32px);
 	background: rgba(0, 0, 0, 0.2);
 	color: #fff;
@@ -135,7 +129,7 @@ export const LeftArrow = styled.div`
 
 export const RightArrow = styled.div`
 	position: absolute;
-	right: 2px;
+	right: 0;
 	top: calc(50% - 32px);
 	background: rgba(0, 0, 0, 0.2);
 	color: #fff;
