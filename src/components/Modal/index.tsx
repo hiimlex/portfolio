@@ -10,6 +10,7 @@ import {
 	Button,
 	Carousel,
 	Close,
+	Colabs,
 	Description,
 	LeftArrow,
 	ModalContent,
@@ -205,6 +206,16 @@ const Modal: React.FC<ModalProps> = (props) => {
 								Acessar MVP
 							</Button>
 						)}
+						<div>
+							{(modal.colabs &&
+								modal.colabs.map(
+									(colab: any, index: number) => {
+										return (
+											<Colabs key={index}>{colab}</Colabs>
+										);
+									}
+								)) || <Colabs>Developed by @me</Colabs>}
+						</div>
 					</ModalInfo>
 				</ModalContent>
 			)}

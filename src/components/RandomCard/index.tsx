@@ -48,6 +48,7 @@ const RandomCard: React.FC<RandomCardProps> = (props) => {
 	const openModalInfo = (proj: Props) => {
 		if (proj && proj.title) {
 			const project = getProjectByName(proj.title);
+			console.log(project);
 			dispachShowModal(project);
 		}
 	};

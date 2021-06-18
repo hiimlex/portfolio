@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { BsMoon } from "react-icons/bs";
 import { IoMdSunny } from "react-icons/io";
 import { ThemeContext } from "styled-components";
+import { Colabs } from "../Modal/styles";
 import {
 	Container,
 	Logo,
@@ -35,6 +36,7 @@ const MainContent: React.FC<Props> = ({ toggleTheme }) => {
 				<Shadow>LeUX</Shadow>
 			</Logo>
 			<Subtitle>Creative Portfolio's</Subtitle>
+			<Colabs>@Developed and Design by me</Colabs>
 		</Container>
 	);
 };

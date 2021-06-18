@@ -3,6 +3,7 @@ export interface Project {
 	project: Array<{ title: string; url: string }>;
 	description?: string;
 	url?: string;
+	colabs?: string[];
 }
 
 const projects: Project[] = [];
@@ -35,6 +36,12 @@ const agroMais: Project = {
 	description:
 		"O Agro+Classificados visa auxiliar as atividades de exposição e vendas dos produtos de pequenos agricultores e pecuaristas, tendo em vista que, com frequência, a exposição dos seus produtos limitam-se apenas às feiras livres ou eventos não permanentes. Além disso, o número de clientes que visitam tais feiras é limitado a uma pequena região geográfica, geralmente de moradores de bairros ou cidades circunvizinhas.",
 	url: "http://agromaisfeira.crato.ifce.edu.br/sobre/",
+	colabs: [
+		"@RenanGustavo",
+		"@FranciscoLucas",
+		"@YuriLacerda",
+		"@RobsonFeitosa",
+	],
 };
 
 const caderNet: Project = {
@@ -61,16 +68,17 @@ const cargaCheia: Project = {
 	project: [
 		{
 			title: "home",
-			url: "/assets/rellusion/Rellusion1.jpeg",
+			url: "/assets/rellusion/carga-cheia-1.jpeg",
 		},
 		{
 			title: "home",
-			url: "/assets/rellusion/Rellusion2.jpeg",
+			url: "/assets/rellusion/carga-cheia-2.jpeg",
 		},
 	],
 	description:
-		"Este projeto foi idealizado e implementado para o Hackaton da Sabão Juá, realizado em Juazeiro do Norte, com intuito de conectar cargas a transportadoras. ",
+		"Este projeto foi idealizado e implementado para o Hackaton da Sabão Juá, realizado em Juazeiro do Norte, com intuito de conectar cargas a transportadoras.",
 	url: "https://github.com/hiimlex/rellusion",
+	colabs: ["@SauloJoab", "@IgorMelo", "@YuriLacerda"],
 };
 
 const rellusion: Project = {
@@ -78,17 +86,18 @@ const rellusion: Project = {
 	project: [
 		{
 			title: "home",
-			url: "/assets/carga-cheia/carga-cheia-1.jpeg",
+			url: "/assets/carga-cheia/Rellusion1.jpeg",
 		},
 		{
 			title: "home",
-			url: "/assets/carga-cheia/carga-cheia-2.jpeg",
+			url: "/assets/carga-cheia/Rellusion2.jpeg",
 		},
 	],
 	description:
-		"Este projeto foi idealizado e implementado para o Hackaton da NASA Space Apps - Consiste em fornecer planetas em Realidade Aumentada, para um ensino mais didático",
+		"Este projeto foi idealizado e implementado para o Hackaton da NASA Space Apps - Consiste em fornecer planetas em Realidade Aumentada, para um ensino mais didático.",
 
 	url: "https://www.figma.com/file/Te0zlXm4mPLH5P8a6lijsh/Hackathon-Sab%C3%A3o-Ju%C3%A1?node-id=28%3A2976",
+	colabs: ["@RenanGustavo", "@IgorMelo", "@PaulaMichelle"],
 };
 
 projects.push(tourApp, agroMais, caderNet, cargaCheia, rellusion);

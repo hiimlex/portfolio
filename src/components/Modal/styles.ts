@@ -175,3 +175,10 @@ export const Button = styled.button`
 		opacity: 0.8;
 	}
 `;
+
+export const Colabs = styled.i`
+	font-size: 1rem;
+	margin-top: 4px;
+	color: ${(props) => props.theme.colors.text};
+	font-weight: 400;
+`;
