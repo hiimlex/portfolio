@@ -17,8 +17,50 @@ const CardContainer: React.FC = () => {
 	const fetchAllCards = React.useCallback(() => {
 		localStorage.setItem("BREAKPOINT", breakpoint);
 		for (let i = 0; i < size + 1; i++) {
-			fetchNewCard();
+			console.log("oi");
+			fetchCard();
 		}
+	}, []);
+
+	const fetchCard = React.useCallback(async () => {
+		await size;
+		let card: Card = {
+			size: { w: 0, h: 0 },
+			src: "",
+		};
+
+		const project: Project = randomProject();
+
+		card.src =
+			project.project[
+				Math.floor(Math.random() * project.project.length)
+			].url;
+		card.description = project.description;
+		card.title = project.name;
+
+		const image: HTMLImageElement = new Image();
+		image.src = process.env.PUBLIC_URL + card.src;
+
+		image.onload = () => {
+			if (
+				card &&
+				typeof card.src !== "undefined" &&
+				card.src &&
+				image &&
+				image.width > 0 &&
+				image.height > 0
+			) {
+				if (image.width > image.height) {
+					card.size.w = image.width / 4;
+					card.size.h = image.height / 4;
+				} else if (image.width < image.height) {
+					card.size.w = image.width / 2.4;
+					card.size.h = image.height / 2.4;
+				}
+
+				setCards((cards) => [...cards, card]);
+			}
+		};
 	}, []);
 
 	const fetchNewCard = React.useCallback(async () => {
