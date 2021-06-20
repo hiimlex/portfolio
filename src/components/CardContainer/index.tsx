@@ -17,7 +17,6 @@ const CardContainer: React.FC = () => {
 	const fetchAllCards = React.useCallback(() => {
 		localStorage.setItem("BREAKPOINT", breakpoint);
 		for (let i = 0; i < size + 1; i++) {
-			console.log("oi");
 			fetchCard();
 		}
 	}, []);
