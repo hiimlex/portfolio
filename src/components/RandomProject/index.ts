@@ -28,14 +28,29 @@ const agroMais: Project = {
 		{ title: "sobre-2", url: "/assets/agro-mais/sobre-2.jpeg" },
 		{ title: "sobre-3", url: "/assets/agro-mais/sobre-3.jpeg" },
 		{ title: "sobre-4", url: "/assets/agro-mais/sobre-4.jpeg" },
-		{ title: "Agro-1", url: "/assets/agro-mais/Agro-1.jpeg" },
-		{ title: "Agro-2", url: "/assets/agro-mais/Agro-2.jpeg" },
-		{ title: "Agro-3", url: "/assets/agro-mais/Agro-3.jpeg" },
-		{ title: "Agro-4", url: "/assets/agro-mais/Agro-4.jpeg" },
 	],
 	description:
 		"O Agro+Classificados visa auxiliar as atividades de exposição e vendas dos produtos de pequenos agricultores e pecuaristas, tendo em vista que, com frequência, a exposição dos seus produtos limitam-se apenas às feiras livres ou eventos não permanentes. Além disso, o número de clientes que visitam tais feiras é limitado a uma pequena região geográfica, geralmente de moradores de bairros ou cidades circunvizinhas.",
 	url: "http://agromaisfeira.crato.ifce.edu.br/sobre/",
+	colabs: [
+		"@RenanGustavo",
+		"@FranciscoLucas",
+		"@YuriLacerda",
+		"@RobsonFeitosa",
+	],
+};
+
+const agroMaisFeira: Project = {
+	name: "Agro+Feira",
+	project: [
+		{ title: "sobre-1", url: "/assets/agro-mais/sobre-1.jpeg" },
+		{ title: "sobre-2", url: "/assets/agro-mais/sobre-2.jpeg" },
+		{ title: "sobre-3", url: "/assets/agro-mais/sobre-3.jpeg" },
+		{ title: "sobre-4", url: "/assets/agro-mais/sobre-4.jpeg" },
+	],
+	description:
+		"Projeto implementado em parceria com a prefeitura do Crato/CE, para feria regional de agricultura.",
+	url: "http://agromaisfeira.crato.ifce.edu.br/",
 	colabs: [
 		"@RenanGustavo",
 		"@FranciscoLucas",
@@ -105,9 +120,6 @@ const homEvents: Project = {
 	name: "HomEvents",
 	project: [
 		{ title: "home", url: "/assets/homevents/add.jpg" },
-		{ title: "home", url: "/assets/homevents/mobile.jpg" },
-		{ title: "home", url: "/assets/homevents/mobile2.jpg" },
-		{ title: "home", url: "/assets/homevents/mobile3.jpg" },
 		{ title: "home", url: "/assets/homevents/add3.jpg" },
 		{ title: "home", url: "/assets/homevents/add2.jpg" },
 		{ title: "home", url: "/assets/homevents/home.jpg" },
@@ -138,7 +150,8 @@ projects.push(
 	cargaCheia,
 	rellusion,
 	homEvents,
-	homEventsMobile
+	homEventsMobile,
+	agroMaisFeira
 );
 
 export const randomProject = (): Project => {

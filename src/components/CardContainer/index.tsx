@@ -130,8 +130,6 @@ const CardContainer: React.FC = () => {
 	useEffect(() => {
 		if (cards.length !== 20) {
 			generateRandomCard();
-			generateRandomCard();
-			generateRandomCard();
 		}
 	}, [cards.length, generateRandomCard]);
 
