@@ -21,7 +21,7 @@ const MainContent: React.FC<Props> = ({ toggleTheme }) => {
 
 	return (
 		<Container>
-			<ThemeSwitch onClick={toggleTheme}>
+			{/* <ThemeSwitch onClick={toggleTheme}>
 				{theme.title === "dark" ? (
 					<IoMdSunny
 						color={theme.colors.contrast}
@@ -30,7 +30,7 @@ const MainContent: React.FC<Props> = ({ toggleTheme }) => {
 				) : (
 					<BsMoon color={theme.colors.contrast} size={20}></BsMoon>
 				)}
-			</ThemeSwitch>
+			</ThemeSwitch> */}
 			<Logo>
 				<Title>LeUX</Title>
 				<Shadow>LeUX</Shadow>

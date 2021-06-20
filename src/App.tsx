@@ -10,17 +10,6 @@ import usePersistedState from "./utils/usePersistedState";
 function App() {
 	const [theme, setTheme] = usePersistedState<any>("theme", dark);
 
-	const handleTheme = () => {
-		setTimeout(() => {
-			setTheme(dark);
-		});
-	};
-
-	useEffect(() => {
-		handleTheme();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
-
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />
