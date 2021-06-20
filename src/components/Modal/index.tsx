@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { connect, ConnectedProps } from "react-redux";
-import { CSSTransition } from "react-transition-group";
 import { ThemeContext } from "styled-components";
 import { hideModal } from "../../store/actions";
 import { RootState } from "../../store/reducers";
@@ -11,9 +10,12 @@ import {
 	Carousel,
 	Close,
 	Colabs,
+	ColabsContent,
 	Description,
 	LeftArrow,
+	ModalComponent,
 	ModalContent,
+	ModalImage,
 	ModalInfo,
 	OutsideModal,
 	Overlay,
@@ -80,24 +82,24 @@ const Modal: React.FC<ModalProps> = (props) => {
 			handleOrientation();
 		}
 
-		if (!clicked) {
-			const id = setTimeout(() => {
-				setCounter(counter + 1);
+		// if (!clicked) {
+		// 	const id = setTimeout(() => {
+		// 		setCounter(counter + 1);
 
-				if (modal) {
-					if (index >= 0) {
-						if (index >= modal.project.length - 1) {
-							setIndex(0);
-						} else {
-							handleNavCarousel(1);
-						}
-					}
-				}
-			}, 2000);
-			return () => {
-				clearTimeout(id);
-			};
-		}
+		// 		if (modal) {
+		// 			if (index >= 0) {
+		// 				if (index >= modal.project.length - 1) {
+		// 					setIndex(0);
+		// 				} else {
+		// 					handleNavCarousel(1);
+		// 				}
+		// 			}
+		// 		}
+		// 	}, 2000);
+		// 	return () => {
+		// 		clearTimeout(id);
+		// 	};
+		// }
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [counter, clicked]);
 
@@ -123,91 +125,72 @@ const Modal: React.FC<ModalProps> = (props) => {
 		<Overlay>
 			<OutsideModal onClick={onCloseButtonClick}></OutsideModal>
 			{can && (
-				<ModalContent>
-					<Close onClick={onCloseButtonClick}>
-						<MdClose size={24} color={theme.colors.text}></MdClose>
-					</Close>
-					<Carousel>
-						{modal &&
-							orientation &&
-							can &&
-							modal.project.map(
-								(
-									el: { title: string; url: string },
-									key: number
-								) => {
-									return (
-										<div key={key}>
-											{key === index && (
-												<CSSTransition
-													in={key === index}
-													timeout={{
-														appear: 200,
-														enter: 400,
-														exit: 500,
-													}}
-													classNames="fade-in"
-													unmountOnExit
-												>
-													<img
-														alt={el.title}
-														src={
-															process.env
-																.PUBLIC_URL +
-															el.url
-														}
-														style={{
-															borderRadius: '12px',
-															width:
-																orientation ===
-																"landscape"
-																	? "54vw"
-																	: "auto",
-															height:
-																orientation ===
-																"landscape"
-																	? "auto"
-																	: "28vw",
-														}}
-													></img>
-												</CSSTransition>
-											)}
-										</div>
-									);
-								}
+				<ModalComponent>
+					<ModalContent>
+						<Close onClick={onCloseButtonClick}>
+							<MdClose
+								size={24}
+								color={theme.colors.text}
+							></MdClose>
+						</Close>
+						<Carousel>
+							{modal &&
+								orientation &&
+								can &&
+								modal.project.map(
+									(
+										el: { title: string; url: string },
+										key: number
+									) => {
+										return (
+											key === index && (
+												<ModalImage
+													key={key}
+													orientation={orientation}
+													alt={el.title}
+													index={index}
+													src={
+														process.env.PUBLIC_URL +
+														el.url
+													}
+												></ModalImage>
+											)
+										);
+									}
+								)}
+							{modal && index > 0 && (
+								<LeftArrow
+									onClick={() => {
+										handleNavCarousel(-1);
+									}}
+								>
+									{"<"}
+								</LeftArrow>
 							)}
-						{modal && index > 0 && (
-							<LeftArrow
-								onClick={() => {
-									handleNavCarousel(-1);
-								}}
-							>
-								{"<"}
-							</LeftArrow>
-						)}
-						{modal && index < modal.project.length - 1 && (
-							<RightArrow
-								onClick={() => {
-									handleNavCarousel(1);
-								}}
-							>
-								{">"}
-							</RightArrow>
-						)}
-					</Carousel>
-					<ModalInfo>
-						<Title>{modal.name}</Title>
-						<Description>{modal.description}</Description>
-						{modal.url && (
-							<Button
-								onClick={() => {
-									window.open(modal.url, "blank");
-								}}
-							>
-								Acessar MVP
-							</Button>
-						)}
-						<div>
+							{modal && index < modal.project.length - 1 && (
+								<RightArrow
+									onClick={() => {
+										handleNavCarousel(1);
+									}}
+								>
+									{">"}
+								</RightArrow>
+							)}
+						</Carousel>
+						<ModalInfo>
+							<Title>{modal.name}</Title>
+							<Description>{modal.description}</Description>
+							{modal.url && (
+								<Button
+									onClick={() => {
+										window.open(modal.url, "blank");
+									}}
+								>
+									Acessar MVP
+								</Button>
+							)}
+						</ModalInfo>
+						<ColabsContent>
 							{(modal.colabs &&
 								modal.colabs.map(
 									(colab: any, index: number) => {
@@ -216,9 +199,9 @@ const Modal: React.FC<ModalProps> = (props) => {
 										);
 									}
 								)) || <Colabs>Developed by @me</Colabs>}
-						</div>
-					</ModalInfo>
-				</ModalContent>
+						</ColabsContent>
+					</ModalContent>
+				</ModalComponent>
 			)}
 
 			{!can && (

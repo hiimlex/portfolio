@@ -34,6 +34,7 @@ export const Image = styled.img<HoverProps>`
 	transition: all 0.5s ease-in-out;
 	transform: inherit;
 	border-radius: 8px !important;
+	image-rendering: optimizeQuality;
 
 	${(props) => {
 		if (props.hover) {

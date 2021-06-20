@@ -7,7 +7,7 @@ export const Container = styled.div`
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 10px;
-	padding: 30px;
+	padding: 20px;
 	place-items: center;
 	z-index: 0;
 `;

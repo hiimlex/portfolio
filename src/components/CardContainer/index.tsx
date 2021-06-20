@@ -20,7 +20,6 @@ const CardContainer: React.FC = () => {
 				data = response.data;
 			})
 			.catch((err) => {
-				console.error(err);
 				return getList(page - 2);
 			});
 
@@ -54,8 +53,8 @@ const CardContainer: React.FC = () => {
 	);
 
 	const createCard = React.useCallback(async () => {
-		let cardWidth = (await width) / 4 - 60;
-		let cardHeight = (await height) / 4 - 60;
+		let cardWidth = (await width) / 2 - 60;
+		let cardHeight = (await height) / 2 - 60;
 		let src;
 		if (cardWidth > 120 && cardHeight > 80) {
 			await getRandom(cardWidth, cardHeight).then((value) => {
@@ -71,8 +70,8 @@ const CardContainer: React.FC = () => {
 	}, [width, height, getRandom]);
 
 	const createList = React.useCallback(async () => {
-		let cardWidth = (await (width / 4)) - 60;
-		let cardHeight = (await (height / 3)) - 60;
+		let cardWidth = (await (width / 4.2)) - 60;
+		let cardHeight = (await (height / 3.2)) - 60;
 
 		const list = await getList(
 			Number(Math.floor(Math.random() * 30).toFixed())
@@ -113,8 +112,8 @@ const CardContainer: React.FC = () => {
 				image.src = card.src;
 				image.onload = () => {
 					if (image.width > 0 && image.height > 0) {
-						card.size.w = image.width * 0.8;
-						card.size.h = image.height * 0.8;
+						card.size.h = image.height;
+						card.size.w = image.width * 0.6;
 					}
 
 					if (
@@ -175,9 +174,9 @@ const CardContainer: React.FC = () => {
 		}
 	}, [createCard]);
 
-	useEffect(() => {
-		generateCardList();
-	}, []);
+	// useEffect(() => {
+	// 	generateCardList();
+	// }, []);
 
 	useEffect(() => {
 		if (cards.length !== 20) {

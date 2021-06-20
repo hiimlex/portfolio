@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+interface ImageProps {
+	orientation: string;
+	index: number;
+	key: number;
+}
+
 export const OutsideModal = styled.div`
 	width: 100vw;
 	height: 100vh;
@@ -10,7 +16,7 @@ export const OutsideModal = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 6;
+	z-index: 5;
 	left: 0;
 	top: 0;
 `;
@@ -22,6 +28,7 @@ export const Overlay = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	overflow: hidden;
 	z-index: 5;
 	left: 0;
 	top: 0;
@@ -42,34 +49,64 @@ export const Close = styled.div`
 	&:hover {
 		opacity: 0.94;
 	}
+
+	margin: 0 !important;
+`;
+
+export const ModalComponent = styled.div`
+	max-width: 92vw;
+	width: auto;
+	min-height: 88vh;
+	height: auto;
+
+	border-radius: 12px;
+	background: ${(props) => props.theme.colors.background};
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	z-index: 8;
+	overflow: auto;
+
+	* {
+		margin: 8px;
+	}
 `;
 
 export const ModalContent = styled.div`
-	width: 88vw;
-	min-height: 70vh;
-	height: auto;
-	padding: 24px;
-	border-radius: 12px;
-	background: ${(props) => props.theme.colors.background};
-	position: relative;
+	width: 100%;
+	height: fit-content;
+
+	padding: 12px;
 
 	display: flex;
 	flex-direction: row;
-	align-items: center;
 	justify-content: center;
-	z-index: 8;
+	align-items: center;
+	flex-wrap: wrap;
+
+	position: relative;
 `;
 
 export const Carousel = styled.div`
-	height: fit-content;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
 	position: relative;
-	min-width: 38vw;
-	max-width: 54vw;
-	width: fit-content;
-	height: fit-content;
+	margin: 0 !important;
+	max-width: 52vw;
+	width: 52vw;
+	min-width: 38px;
+`;
+
+export const ModalImage = styled.img<ImageProps>`
+	object-fit: contain;
+	border-radius: 12px;
+	margin: 0 !important;
+	width: ${(props) => (props.orientation === "landscape" ? "52vw" : "auto")};
+	height: ${(props) => (props.orientation === "landscape" ? "auto" : "38vw")};
 `;
 
 export const ModalInfo = styled.div`
@@ -78,8 +115,8 @@ export const ModalInfo = styled.div`
 	align-items: center;
 	justify-content: center;
 	text-align: justify;
-	margin-left: 24px;
-	flex: 1;
+	flex-wrap: wrap;
+	width: 32vw;
 
 	* {
 		margin: 18px;
@@ -87,15 +124,15 @@ export const ModalInfo = styled.div`
 `;
 
 export const Title = styled.h3`
-	font-size: 2rem;
-	line-height: 2rem;
+	font-size: 1.8rem;
+	line-height: 1.8rem;
 
 	color: ${(props) => props.theme.colors.text};
 	font-weight: 700;
 `;
 
 export const Description = styled.p`
-	font-size: 1.1rem;
+	font-size: 1rem;
 	line-height: 1.4rem;
 
 	color: ${(props) => props.theme.colors.text};
@@ -112,6 +149,7 @@ export const LeftArrow = styled.div`
 	height: 48px;
 	border-top-right-radius: 8px;
 	border-bottom-right-radius: 8px;
+	margin: 0 !important;
 
 	display: flex;
 	justify-content: center;
@@ -129,6 +167,8 @@ export const LeftArrow = styled.div`
 
 export const RightArrow = styled.div`
 	position: absolute;
+	margin: 0 !important;
+
 	right: 0;
 	top: calc(50% - 32px);
 	background: rgba(0, 0, 0, 0.2);
@@ -178,7 +218,18 @@ export const Button = styled.button`
 
 export const Colabs = styled.i`
 	font-size: 1rem;
-	margin-top: 4px;
 	color: ${(props) => props.theme.colors.text};
 	font-weight: 400;
+`;
+
+export const ColabsContent = styled.div`
+	width: 100%;
+
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+
+	* {
+		margin: 0 24px;
+	}
 `;
