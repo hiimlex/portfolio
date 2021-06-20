@@ -70,7 +70,6 @@ export const ModalComponent = styled.div`
 	width: auto;
 	min-height: 80vh;
 	height: auto;
-	overflow: scroll;
 
 	border-radius: 12px;
 	background: ${(props) => props.theme.colors.background};
