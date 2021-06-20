@@ -12,7 +12,7 @@ import GlobalStyle from "./styles/global";
 import dark from "./styles/themes/dark";
 import light from "./styles/themes/light";
 import usePersistedState from "./utils/usePersistedState";
-import useWindowSize from "./utils/windowSize";
+import useWindowSize from "./utils/useWindowSize";
 import "./animations.css";
 
 function App(props: any) {
