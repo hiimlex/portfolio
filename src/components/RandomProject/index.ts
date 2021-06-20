@@ -68,16 +68,17 @@ const cargaCheia: Project = {
 	project: [
 		{
 			title: "home",
-			url: "/assets/rellusion/carga-cheia-1.jpeg",
+			url: "/assets/carga-cheia/carga-cheia-1.jpeg",
 		},
 		{
 			title: "home",
-			url: "/assets/rellusion/carga-cheia-2.jpeg",
+			url: "/assets/carga-cheia/carga-cheia-2.jpeg",
 		},
 	],
 	description:
 		"Este projeto foi idealizado e implementado para o Hackaton da Sabão Juá, realizado em Juazeiro do Norte, com intuito de conectar cargas a transportadoras.",
-	url: "https://github.com/hiimlex/rellusion",
+	url: "https://www.figma.com/file/Te0zlXm4mPLH5P8a6lijsh/Hackathon-Sab%C3%A3o-Ju%C3%A1?node-id=28%3A2976",
+
 	colabs: ["@SauloJoab", "@IgorMelo", "@YuriLacerda"],
 };
 
@@ -86,17 +87,17 @@ const rellusion: Project = {
 	project: [
 		{
 			title: "home",
-			url: "/assets/carga-cheia/Rellusion1.jpeg",
+			url: "/assets/rellusion/Rellusion1.jpeg",
 		},
 		{
 			title: "home",
-			url: "/assets/carga-cheia/Rellusion2.jpeg",
+			url: "/assets/rellusion/Rellusion2.jpeg",
 		},
 	],
 	description:
 		"Este projeto foi idealizado e implementado para o Hackaton da NASA Space Apps - Consiste em fornecer planetas em Realidade Aumentada, para um ensino mais didático.",
+	url: "https://github.com/hiimlex/rellusion",
 
-	url: "https://www.figma.com/file/Te0zlXm4mPLH5P8a6lijsh/Hackathon-Sab%C3%A3o-Ju%C3%A1?node-id=28%3A2976",
 	colabs: ["@RenanGustavo", "@IgorMelo", "@PaulaMichelle"],
 };
 
