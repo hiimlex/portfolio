@@ -1,26 +1,19 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { CSSTransition } from "react-transition-group";
 import { ThemeProvider } from "styled-components";
+import "./animations.css";
 import CardContainer from "./components/CardContainer";
 import MainContent from "./components/MainContent";
-import MobileAdvice from "./components/MobileAdvice";
 import Modal from "./components/Modal";
-import { RootState } from "./store/reducers";
 import Content from "./styles/content";
 import GlobalStyle from "./styles/global";
 import dark from "./styles/themes/dark";
 import light from "./styles/themes/light";
 import usePersistedState from "./utils/usePersistedState";
-import useWindowSize from "./utils/useWindowSize";
-import "./animations.css";
 
-function App(props: any) {
-	const [width] = useWindowSize();
+function App() {
 	const [theme, setTheme] = usePersistedState<any>("theme", dark);
 
 	const toggleTheme = () => {
-		console.log(props.modal);
 		setTheme(theme.title === "dark" ? light : dark);
 	};
 
@@ -38,27 +31,15 @@ function App(props: any) {
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />
-			{width > 420 && (
-				<Content>
-					<MainContent toggleTheme={toggleTheme} />
-					<CardContainer></CardContainer>
-				</Content>
-			)}
-			{width < 420 && <MobileAdvice></MobileAdvice>}
-			<CSSTransition
-				in={props.modal}
-				timeout={300}
-				classNames="modal"
-				unmountOnExit
-			>
-				<Modal />
-			</CSSTransition>
+
+			<Content>
+				<MainContent toggleTheme={toggleTheme} />
+				<CardContainer></CardContainer>
+			</Content>
+
+			<Modal />
 		</ThemeProvider>
 	);
 }
 
-const mapStateToProps = (state: RootState) => ({
-	modal: state.modal.modal,
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

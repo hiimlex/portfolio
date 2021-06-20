@@ -1,19 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import useWindowSize from "../../utils/useWindowSize";
+import useGrid from "../../utils/useGrid";
 import RandomCard from "../RandomCard";
 import { Project, randomProject } from "../RandomProject";
 import { Container } from "./styles";
 
 const CardContainer: React.FC = () => {
 	const [cards, setCards] = useState<Card[] | []>([]);
-	const [width, height] = useWindowSize();
 
 	const [counter, setCounter] = useState(0);
 
+	const [breakpoint, grid] = useGrid();
+
+	const [size, setSize] = useState<number>(grid.column * grid.row);
+
+	const fetchAllCards = React.useCallback(() => {
+		localStorage.setItem("BREAKPOINT", breakpoint);
+		for (let i = 0; i < size + 1; i++) {
+			fetchNewCard();
+		}
+	}, []);
+
 	const fetchNewCard = React.useCallback(async () => {
-		const index = Math.floor(Math.random() * 20 - 1);
-		if (index >= 0 && index <= 20) {
+		await size;
+		const index = Math.floor(Math.random() * size);
+		if (index >= 0 && index <= size) {
 			let card: Card = {
 				size: { w: 0, h: 0 },
 				src: "",
@@ -61,10 +72,24 @@ const CardContainer: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
-		if (cards.length !== 20) {
+		fetchAllCards();
+	}, []);
+
+	useEffect(() => {
+		if (cards.length > size) {
+			cards.pop();
+		}
+	}, [cards.length, size]);
+
+	useEffect(() => {
+		setSize(grid.row * grid.column);
+	}, [grid]);
+
+	useEffect(() => {
+		if (cards.length < size) {
 			fetchNewCard();
 		}
-	}, [cards.length, fetchNewCard]);
+	}, [cards.length, fetchNewCard, size]);
 
 	useEffect(() => {
 		const id = setTimeout(() => {
@@ -77,7 +102,12 @@ const CardContainer: React.FC = () => {
 	}, [counter]);
 
 	return (
-		<Container>
+		<Container
+			style={{
+				gridTemplateColumns: `repeat(${grid.column}, 1fr)`,
+				gridTemplateRows: `repeat(${grid.row}, 1fr)`,
+			}}
+		>
 			{cards.map((card: Card, key: number) => {
 				return (
 					<RandomCard

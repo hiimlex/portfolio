@@ -10,15 +10,18 @@ export const OutsideModal = styled.div`
 	width: 100vw;
 	height: 100vh;
 	position: absolute;
-	overflow: hidden;
 	background: rgba(0, 0, 0, 0.3);
-
+	overflow: hidden;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	z-index: 5;
 	left: 0;
 	top: 0;
+
+	@media (max-width: 720px) {
+		overflow-y: auto;
+	}
 `;
 
 export const Overlay = styled.div`
@@ -32,12 +35,16 @@ export const Overlay = styled.div`
 	z-index: 5;
 	left: 0;
 	top: 0;
+
+	@media (max-width: 720px) {
+		overflow-y: auto;
+	}
 `;
 
 export const Close = styled.div`
 	position: absolute;
-	right: 12px;
-	top: 12px;
+	right: 8px;
+	top: 8px;
 
 	display: flex;
 	align-items: center;
@@ -51,13 +58,19 @@ export const Close = styled.div`
 	}
 
 	margin: 0 !important;
+
+	@media (max-width: 720px) {
+		right: -4px;
+		top: -4px;
+	}
 `;
 
 export const ModalComponent = styled.div`
 	max-width: 92vw;
 	width: auto;
-	min-height: 88vh;
+	min-height: 80vh;
 	height: auto;
+	overflow: scroll;
 
 	border-radius: 12px;
 	background: ${(props) => props.theme.colors.background};
@@ -65,18 +78,26 @@ export const ModalComponent = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-wrap: wrap;
 
 	z-index: 8;
-	overflow: auto;
 
 	* {
 		margin: 8px;
+	}
+
+	@media (max-width: 720px) {
+		position: absolute;
+		top: 0;
+		min-width: 100vw;
+		min-height: 100vh;
+		border-radius: 0;
 	}
 `;
 
 export const ModalContent = styled.div`
 	width: 100%;
-	height: fit-content;
+	height: auto;
 
 	padding: 12px;
 
@@ -99,6 +120,14 @@ export const Carousel = styled.div`
 	max-width: 52vw;
 	width: 52vw;
 	min-width: 38px;
+	height: auto;
+
+	@media (max-width: 720px) {
+		max-width: 80vw;
+		width: auto;
+		min-height: 42vw;
+		height: auto;
+	}
 `;
 
 export const ModalImage = styled.img<ImageProps>`
@@ -107,6 +136,13 @@ export const ModalImage = styled.img<ImageProps>`
 	margin: 0 !important;
 	width: ${(props) => (props.orientation === "landscape" ? "52vw" : "auto")};
 	height: ${(props) => (props.orientation === "landscape" ? "auto" : "38vw")};
+
+	@media (max-width: 720px) {
+		width: ${(props) =>
+			props.orientation === "landscape" ? "80vw" : "auto"};
+		height: ${(props) =>
+			props.orientation === "landscape" ? "auto" : "52vh"};
+	}
 `;
 
 export const ModalInfo = styled.div`
@@ -120,6 +156,12 @@ export const ModalInfo = styled.div`
 
 	* {
 		margin: 18px;
+	}
+
+	@media (max-width: 720px) {
+		width: 100vw;
+		margin: 0;
+		padding: 0;
 	}
 `;
 
@@ -228,6 +270,7 @@ export const ColabsContent = styled.div`
 	display: flex;
 	justify-content: center;
 	flex-direction: row;
+	flex-wrap: wrap;
 
 	* {
 		margin: 0 24px;

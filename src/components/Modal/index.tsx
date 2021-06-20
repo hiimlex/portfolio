@@ -126,10 +126,13 @@ const Modal: React.FC<ModalProps> = (props) => {
 			<OutsideModal onClick={onCloseButtonClick}></OutsideModal>
 			{can && (
 				<ModalComponent>
-					<Close onClick={onCloseButtonClick}>
-						<MdClose size={24} color={theme.colors.text}></MdClose>
-					</Close>
 					<ModalContent>
+						<Close onClick={onCloseButtonClick}>
+							<MdClose
+								size={24}
+								color={theme.colors.text}
+							></MdClose>
+						</Close>
 						<Carousel>
 							{modal &&
 								orientation &&

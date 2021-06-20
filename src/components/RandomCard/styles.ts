@@ -25,6 +25,13 @@ export const Card = styled.div<StyledProps>`
 		}`;
 		}
 	}}
+
+	@media(max-width: 720px) {
+		max-width: 80vw;
+		width: auto;
+		height: auto;
+		border-radius: 12px;
+	}
 `;
 
 export const Image = styled.img<HoverProps>`
