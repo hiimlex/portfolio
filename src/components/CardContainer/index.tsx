@@ -14,10 +14,9 @@ const CardContainer: React.FC = () => {
 
 	const [size, setSize] = useState<number>(grid.column * grid.row);
 
-	const fetchAllCards = React.useCallback(async () => {
-		await size;
+	const fetchAllCards = React.useCallback(() => {
 		localStorage.setItem("BREAKPOINT", breakpoint);
-		for (let i = 0; i < size + 1; i++) {
+		for (let i = 0; i < grid.column * grid.row + 1; i++) {
 			fetchCard();
 		}
 	}, []);
@@ -114,6 +113,11 @@ const CardContainer: React.FC = () => {
 	}, []);
 
 	useEffect(() => {
+		setSize(grid.row * grid.column);
+	}, [grid]);
+
+	useEffect(() => {
+		setSize(grid.column * grid.row);
 		fetchAllCards();
 	}, []);
 
@@ -124,10 +128,6 @@ const CardContainer: React.FC = () => {
 			}
 		});
 	}, [cards.length, size, grid]);
-
-	useEffect(() => {
-		setSize(grid.row * grid.column);
-	}, [grid]);
 
 	useEffect(() => {
 		setTimeout(() => {
