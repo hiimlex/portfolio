@@ -126,7 +126,7 @@ const CardContainer: React.FC = () => {
 		} else if (cards.length < size) {
 			fetchAllCards(size);
 		}
-	}, [size, cards.length]);
+	}, [size]);
 
 	useEffect(() => {
 		setTimeout(() => {
