@@ -7,3 +7,6 @@
 -   add Projects DONE
 -   dinamic grid
 -   mobile interface
+-   preload images
+-   connect with my Website
+-   all pages
