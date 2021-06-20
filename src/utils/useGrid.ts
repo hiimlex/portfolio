@@ -51,8 +51,6 @@ function useGrid(): Response {
 		grid.row = 1;
 	}
 
-	console.log(grid);
-
 	return [breakpoint, grid];
 }
 
