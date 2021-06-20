@@ -115,7 +115,7 @@ const CardContainer: React.FC = () => {
 	useEffect(() => {
 		setSize(grid.row * grid.column);
 		fetchAllCards();
-	}, [size]);
+	}, [grid]);
 
 	useEffect(() => {
 		fetchAllCards();
@@ -131,7 +131,7 @@ const CardContainer: React.FC = () => {
 
 	useEffect(() => {
 		setTimeout(() => {
-			if (cards.length < size) {
+			if (cards.length !== size) {
 				fetchNewCard();
 			}
 		});

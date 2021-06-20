@@ -15,6 +15,10 @@ function useGrid(): Response {
 	let grid = { column: 4, row: 3 };
 	let breakpoint: SS = "lg";
 
+	if (width < 120) {
+		return [breakpoint, grid];
+	}
+
 	if (width > 1440) {
 		grid.column = 5;
 		breakpoint = "xl";
