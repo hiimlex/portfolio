@@ -12,20 +12,6 @@ const CardContainer: React.FC = () => {
 
 	const [counter, setCounter] = useState(0);
 
-	const getList = React.useCallback(async (page: number) => {
-		let data: ImagePicsum[] = [];
-		await axios
-			.get(`https://picsum.photos/v2/list?page=${page}&limit=${20}`)
-			.then((response) => {
-				data = response.data;
-			})
-			.catch((err) => {
-				return getList(page - 2);
-			});
-
-		return data;
-	}, []);
-
 	const getRandom = React.useCallback(
 		async (width: number, height: number) => {
 			let data;
@@ -53,8 +39,8 @@ const CardContainer: React.FC = () => {
 	);
 
 	const createCard = React.useCallback(async () => {
-		let cardWidth = (await width) / 2 - 60;
-		let cardHeight = (await height) / 2 - 60;
+		let cardWidth = (await width) / 3 - 60;
+		let cardHeight = (await height) / 3 - 60;
 		let src;
 		if (cardWidth > 120 && cardHeight > 80) {
 			await getRandom(cardWidth, cardHeight).then((value) => {
@@ -69,39 +55,6 @@ const CardContainer: React.FC = () => {
 		return card;
 	}, [width, height, getRandom]);
 
-	const createList = React.useCallback(async () => {
-		let cardWidth = (await (width / 4.2)) - 60;
-		let cardHeight = (await (height / 3.2)) - 60;
-
-		const list = await getList(
-			Number(Math.floor(Math.random() * 30).toFixed())
-		);
-
-		const cardList: Card[] = [];
-
-		list.forEach((el: ImagePicsum) => {
-			const card: Card = {
-				size: { w: cardWidth, h: cardHeight },
-				src: el.download_url,
-			};
-
-			cardList.push(card);
-		});
-
-		return cardList;
-	}, [getList, height, width]);
-
-	const generateCardList: any = React.useCallback(async () => {
-		if (cards.length !== 20) {
-			const list = await createList();
-			if (list && list.length > 0) {
-				setCards(list);
-			} else {
-				return generateCardList();
-			}
-		}
-	}, [cards.length, createList]);
-
 	const generateRandomCard = React.useCallback(async () => {
 		const index = Math.floor(Math.random() * 20 - 1);
 		if (index >= 0 && index <= 20) {
@@ -112,7 +65,7 @@ const CardContainer: React.FC = () => {
 				image.src = card.src;
 				image.onload = () => {
 					if (image.width > 0 && image.height > 0) {
-						card.size.h = image.height;
+						card.size.h = image.height * 0.8;
 						card.size.w = image.width * 0.6;
 					}
 
@@ -174,12 +127,10 @@ const CardContainer: React.FC = () => {
 		}
 	}, [createCard]);
 
-	// useEffect(() => {
-	// 	generateCardList();
-	// }, []);
-
 	useEffect(() => {
 		if (cards.length !== 20) {
+			generateRandomCard();
+			generateRandomCard();
 			generateRandomCard();
 		}
 	}, [cards.length, generateRandomCard]);
@@ -188,7 +139,7 @@ const CardContainer: React.FC = () => {
 		const id = setTimeout(() => {
 			setCounter(counter + 1);
 			generateRandomCard();
-		}, 5000);
+		}, 3000);
 		return () => {
 			clearTimeout(id);
 		};
@@ -220,13 +171,6 @@ interface Card {
 interface Size {
 	w: number;
 	h: number;
-}
-
-interface ImagePicsum {
-	id: number;
-	width: number;
-	heigh: number;
-	download_url: string;
 }
 
 export default CardContainer;

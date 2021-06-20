@@ -82,24 +82,24 @@ const Modal: React.FC<ModalProps> = (props) => {
 			handleOrientation();
 		}
 
-		// if (!clicked) {
-		// 	const id = setTimeout(() => {
-		// 		setCounter(counter + 1);
+		if (!clicked) {
+			const id = setTimeout(() => {
+				setCounter(counter + 1);
 
-		// 		if (modal) {
-		// 			if (index >= 0) {
-		// 				if (index >= modal.project.length - 1) {
-		// 					setIndex(0);
-		// 				} else {
-		// 					handleNavCarousel(1);
-		// 				}
-		// 			}
-		// 		}
-		// 	}, 2000);
-		// 	return () => {
-		// 		clearTimeout(id);
-		// 	};
-		// }
+				if (modal) {
+					if (index >= 0) {
+						if (index >= modal.project.length - 1) {
+							setIndex(0);
+						} else {
+							handleNavCarousel(1);
+						}
+					}
+				}
+			}, 2000);
+			return () => {
+				clearTimeout(id);
+			};
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [counter, clicked]);
 

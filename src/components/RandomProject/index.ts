@@ -101,7 +101,45 @@ const rellusion: Project = {
 	colabs: ["@RenanGustavo", "@IgorMelo", "@PaulaMichelle"],
 };
 
-projects.push(tourApp, agroMais, caderNet, cargaCheia, rellusion);
+const homEvents: Project = {
+	name: "HomEvents",
+	project: [
+		{ title: "home", url: "/assets/homevents/add.jpg" },
+		{ title: "home", url: "/assets/homevents/mobile.jpg" },
+		{ title: "home", url: "/assets/homevents/mobile2.jpg" },
+		{ title: "home", url: "/assets/homevents/mobile3.jpg" },
+		{ title: "home", url: "/assets/homevents/add3.jpg" },
+		{ title: "home", url: "/assets/homevents/add2.jpg" },
+		{ title: "home", url: "/assets/homevents/home.jpg" },
+		{ title: "home", url: "/assets/homevents/login.jpg" },
+		{ title: "home", url: "/assets/homevents/register.jpg" },
+	],
+	description:
+		"Bem no inicio da pandemia, eu implementei e idealizei uma maneira de compartilhar atividades fisicas a partir de casa, a HomEvents surgiu com a proposta de interligar praticantes de qualquer tipo de exercicio ou atividade compartilhada.",
+	url: "https://github.com/hiimlex/homevents",
+};
+
+const homEventsMobile: Project = {
+	name: "HomEvents - Mobile Interface",
+	project: [
+		{ title: "home", url: "/assets/homevents/mobile.jpg" },
+		{ title: "home", url: "/assets/homevents/mobile2.jpg" },
+		{ title: "home", url: "/assets/homevents/mobile3.jpg" },
+	],
+	description:
+		"Bem no inicio da pandemia, eu implementei e idealizei uma maneira de compartilhar atividades fisicas a partir de casa, a HomEvents surgiu com a proposta de interligar praticantes de qualquer tipo de exercicio ou atividade compartilhada.",
+	url: "https://github.com/hiimlex/homevents",
+};
+
+projects.push(
+	tourApp,
+	agroMais,
+	caderNet,
+	cargaCheia,
+	rellusion,
+	homEvents,
+	homEventsMobile
+);
 
 export const randomProject = (): Project => {
 	return projects[Math.floor(Math.random() * projects.length)];
