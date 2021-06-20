@@ -15,43 +15,43 @@ function useGrid(): Response {
 	let grid = { column: 4, row: 3 };
 	let breakpoint: SS = "lg";
 
-	setTimeout(() => {
-		if (width > 1440) {
-			grid.column = 5;
-			breakpoint = "xl";
-		}
+	if (width > 1440) {
+		grid.column = 5;
+		breakpoint = "xl";
+	}
 
-		if (width < 1200) {
-			grid.column = 4;
-			breakpoint = "lg";
-		}
+	if (width < 1200) {
+		grid.column = 4;
+		breakpoint = "lg";
+	}
 
-		if (width < 890) {
-			grid.column = 3;
-			breakpoint = "md";
-		}
+	if (width < 890) {
+		grid.column = 3;
+		breakpoint = "md";
+	}
 
-		if (width < 680) {
-			grid.column = 1;
-			breakpoint = "sm";
-		}
+	if (width < 680) {
+		grid.column = 1;
+		breakpoint = "sm";
+	}
 
-		if (height > 798) {
-			grid.row = 4;
-		}
+	if (height > 798) {
+		grid.row = 4;
+	}
 
-		if (width < 580) {
-			grid.row = 3;
-		}
+	if (width < 580) {
+		grid.row = 3;
+	}
 
-		if (width < 432) {
-			grid.row = 2;
-		}
+	if (width < 432) {
+		grid.row = 2;
+	}
 
-		if (height < 320) {
-			grid.row = 1;
-		}
-	});
+	if (height < 320) {
+		grid.row = 1;
+	}
+
+	console.log(grid);
 
 	return [breakpoint, grid];
 }

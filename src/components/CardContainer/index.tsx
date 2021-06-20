@@ -114,10 +114,10 @@ const CardContainer: React.FC = () => {
 
 	useEffect(() => {
 		setSize(grid.row * grid.column);
-	}, [grid]);
+		fetchAllCards();
+	}, [size]);
 
 	useEffect(() => {
-		setSize(grid.column * grid.row);
 		fetchAllCards();
 	}, []);
 
