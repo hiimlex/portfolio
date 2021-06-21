@@ -164,3 +164,9 @@ export const getProjectByName = (name: string): Project | undefined => {
 		if (project) return project;
 	}
 };
+
+export const getAllProjects = (): Project[] => {
+	return projects;
+};
+
+export const getProjectSize = projects.length;
