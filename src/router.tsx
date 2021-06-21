@@ -5,6 +5,7 @@ import {
 	Redirect,
 	Switch,
 } from "react-router-dom";
+import Landing from "./pages/Landing";
 import Portfolio from "./pages/Portfolio";
 
 function AppRouter() {
@@ -13,6 +14,9 @@ function AppRouter() {
 			<Switch>
 				<Route path="/portfolio" exact>
 					<Portfolio></Portfolio>
+				</Route>
+				<Route path="/portfolio/all">
+					<Landing></Landing>
 				</Route>
 				<Redirect to="/portfolio"></Redirect>
 			</Switch>
