@@ -8,7 +8,7 @@ import dark from "./styles/themes/dark";
 import usePersistedState from "./utils/usePersistedState";
 
 function App() {
-	const [theme, setTheme] = usePersistedState<any>("theme", dark);
+	const [theme] = usePersistedState<any>("theme", dark);
 
 	return (
 		<ThemeProvider theme={theme}>

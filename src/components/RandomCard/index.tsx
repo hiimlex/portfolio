@@ -6,7 +6,7 @@ import randomAnimation, { clearAnimation } from "../../utils/randomAnimation";
 import { getProjectByName } from "../RandomProject";
 import { Card, Image } from "./styles";
 
-interface Props {
+export interface Props {
 	size: Size;
 	src: any;
 	title?: string;
@@ -28,8 +28,9 @@ type RandomCardProps = Props & ConnectedProps<typeof connector>;
 const RandomCard: React.FC<RandomCardProps> = (props) => {
 	const [counter, setCounter] = useState<number>(0);
 
-	const [animation, setAnimation] =
-		useState<FlattenSimpleInterpolation | undefined>(randomAnimation);
+	const [animation, setAnimation] = useState<
+		FlattenSimpleInterpolation | undefined
+	>(randomAnimation);
 
 	const [stopAnimation, setStopAnimation] = useState<boolean>(false);
 	const [local, setLocal] = useState<boolean>(false);
@@ -45,7 +46,7 @@ const RandomCard: React.FC<RandomCardProps> = (props) => {
 		setStopAnimation(stop);
 	};
 
-	const openModalInfo = (proj: Props) => {
+	const openModalInfo = (proj: { title?: string }) => {
 		if (proj && proj.title) {
 			const project = getProjectByName(proj.title);
 			dispachShowModal(project);
@@ -58,7 +59,7 @@ const RandomCard: React.FC<RandomCardProps> = (props) => {
 			if (!stopAnimation) {
 				setAnimation(randomAnimation);
 			}
-		}, 2500);
+		}, 4000);
 		return () => {
 			clearTimeout(id);
 		};
@@ -92,7 +93,7 @@ const RandomCard: React.FC<RandomCardProps> = (props) => {
 				}}
 				hover={hasTitle}
 				onClick={() => {
-					openModalInfo(props);
+					openModalInfo({ title: props.title });
 				}}
 			>
 				<Image

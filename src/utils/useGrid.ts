@@ -20,7 +20,7 @@ function useGrid(): Response {
 	}
 
 	if (width > 1440) {
-		grid.column = 5;
+		grid.column = 4;
 		breakpoint = "xl";
 	}
 

@@ -140,7 +140,7 @@ const CardContainer: React.FC = () => {
 		const id = setTimeout(() => {
 			setCounter(counter + 1);
 			fetchNewCard();
-		}, 3000);
+		}, 6000);
 		return () => {
 			clearTimeout(id);
 		};

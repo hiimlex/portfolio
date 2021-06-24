@@ -124,15 +124,12 @@ const Modal: React.FC<ModalProps> = (props) => {
 	return (
 		<Overlay>
 			<OutsideModal onClick={onCloseButtonClick}></OutsideModal>
+			<Close onClick={onCloseButtonClick}>
+				<MdClose size={24} color={theme.colors.text}></MdClose>
+			</Close>
 			{can && (
 				<ModalComponent>
 					<ModalContent>
-						<Close onClick={onCloseButtonClick}>
-							<MdClose
-								size={24}
-								color={theme.colors.text}
-							></MdClose>
-						</Close>
 						<Carousel>
 							{modal &&
 								orientation &&

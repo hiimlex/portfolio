@@ -1,26 +1,13 @@
-import React, { useContext } from "react";
-import { BsMoon } from "react-icons/bs";
-import { IoMdSunny } from "react-icons/io";
-import { Link } from "react-router-dom";
-import { ThemeContext } from "styled-components";
+import React from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import { Button, Colabs } from "../Modal/styles";
-import {
-	Container,
-	Logo,
-	Shadow,
-	Subtitle,
-	ThemeSwitch,
-	Title,
-} from "./styles";
-import { useHistory } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { Container, Logo, Shadow, Subtitle, Title } from "./styles";
 
 interface Props {
 	toggleTheme(): void;
 }
 
 const MainContent: React.FC<Props> = ({ toggleTheme }) => {
-	const theme = useContext(ThemeContext);
 	const history = useHistory();
 	const location = useLocation();
 
@@ -45,7 +32,7 @@ const MainContent: React.FC<Props> = ({ toggleTheme }) => {
 				<Shadow>LeUX</Shadow>
 			</Logo>
 			<Subtitle>Creative Portfolio's</Subtitle>
-			<Colabs>@Developed and Design by me</Colabs>
+			<Colabs style={{margin: '8px 0'}}>@Developed and Design by me</Colabs>
 			{location.pathname === "/portfolio" && (
 				<Button style={{ marginTop: 12 }} onClick={navigateToAll}>
 					Ver Todos

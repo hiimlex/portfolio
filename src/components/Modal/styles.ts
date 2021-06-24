@@ -9,7 +9,7 @@ interface ImageProps {
 export const OutsideModal = styled.div`
 	width: 100vw;
 	height: 100vh;
-	position: absolute;
+	position: fixed;
 	background: rgba(0, 0, 0, 0.3);
 	overflow: hidden;
 	display: flex;
@@ -51,6 +51,7 @@ export const Close = styled.div`
 	justify-content: center;
 	cursor: pointer;
 	opacity: 1;
+	z-index: 99999;
 	transition: all 0.3s ease;
 
 	&:hover {
@@ -60,16 +61,15 @@ export const Close = styled.div`
 	margin: 0 !important;
 
 	@media (max-width: 720px) {
-		right: -4px;
-		top: -4px;
+		right: 8px;
+		top: 8px;
 	}
 `;
 
 export const ModalComponent = styled.div`
 	max-width: 92vw;
-	width: auto;
-	min-height: 80vh;
-	height: auto;
+	min-height: 70vh;
+	position: relative;
 
 	border-radius: 12px;
 	background: ${(props) => props.theme.colors.background};
@@ -270,6 +270,7 @@ export const ColabsContent = styled.div`
 	justify-content: center;
 	flex-direction: row;
 	flex-wrap: wrap;
+	margin-top: 48px;
 
 	* {
 		margin: 0 24px;

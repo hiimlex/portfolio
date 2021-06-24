@@ -113,7 +113,7 @@ const rellusion: Project = {
 		"Este projeto foi idealizado e implementado para o Hackaton da NASA Space Apps - Consiste em fornecer planetas em Realidade Aumentada, para um ensino mais didático.",
 	url: "https://github.com/hiimlex/rellusion",
 
-	colabs: ["@RenanGustavo", "@IgorMelo", "@PaulaMichelle"],
+	colabs: ["@RenanGustavo", "@IgorMelo", "@PaulaMicheli"],
 };
 
 const homEvents: Project = {
