@@ -19,6 +19,7 @@ function AppRouter() {
 					<Landing></Landing>
 				</Route>
 				<Redirect from="/portfolio" to="/"></Redirect>
+				<Redirect from="/" to="/"></Redirect>
 			</Switch>
 		</Router>
 	);
