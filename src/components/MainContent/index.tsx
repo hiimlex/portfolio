@@ -8,7 +8,7 @@ const MainContent: React.FC = () => {
 	const location = useLocation();
 
 	function navigateToAll() {
-		history.push("/all");
+		history.push("/portfolio/all");
 	}
 
 	return (
