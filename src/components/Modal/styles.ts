@@ -21,6 +21,7 @@ export const OutsideModal = styled.div`
 
 	@media (max-width: 720px) {
 		overflow-y: auto;
+		overflow-x: hidden;
 	}
 `;
 
@@ -38,6 +39,7 @@ export const Overlay = styled.div`
 
 	@media (max-width: 720px) {
 		overflow-y: auto;
+		overflow-x: hidden;
 	}
 `;
 
@@ -68,7 +70,8 @@ export const Close = styled.div`
 
 export const ModalComponent = styled.div`
 	max-width: 92vw;
-	min-height: 70vh;
+	max-height: 92vh;
+	height: fit-content;
 	position: relative;
 
 	border-radius: 12px;
@@ -138,9 +141,9 @@ export const ModalImage = styled.img<ImageProps>`
 
 	@media (max-width: 720px) {
 		width: ${(props) =>
-			props.orientation === "landscape" ? "80vw" : "auto"};
+			props.orientation === "landscape" ? "72vw" : "auto"};
 		height: ${(props) =>
-			props.orientation === "landscape" ? "auto" : "52vh"};
+			props.orientation === "landscape" ? "auto" : "40vh"};
 	}
 `;
 
@@ -270,9 +273,8 @@ export const ColabsContent = styled.div`
 	justify-content: center;
 	flex-direction: row;
 	flex-wrap: wrap;
-	margin-top: 48px;
 
 	* {
-		margin: 0 24px;
+		margin: 0 2vh;
 	}
 `;

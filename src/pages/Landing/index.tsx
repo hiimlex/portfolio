@@ -3,7 +3,7 @@ import { FiArrowLeft } from "react-icons/fi";
 import { connect, ConnectedProps } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ThemeContext } from "styled-components";
-import { Colabs, ColabsContent } from "../../components/Modal/styles";
+import { Colabs } from "../../components/Modal/styles";
 import {
 	getAllProjects,
 	getProjectByName,
@@ -22,7 +22,6 @@ import {
 	ProjectTitle,
 	Title,
 } from "./styles";
-
 const mapStateToProps = (state: RootState) => ({
 	modal: state.modal.modal,
 });
@@ -77,34 +76,39 @@ const Landing: React.FC<LandingProps> = (props) => {
 			>
 				<FiArrowLeft color={theme.colors.text} size={22} /> Back{" "}
 			</Back>
-			<Container>
-				<Title>My Projects</Title>
-				<Projects
-					style={{
-						columnCount: grid.column,
-						MozColumnCount: grid.column,
-						WebkitColumnCount: grid.column,
-					}}
-				>
-					{projects.map((el: Project, index: number) => (
-						<ProjectCard
-							key={index}
-							onClick={() => {
-								openModalInfo({ title: el.name });
-							}}
-						>
-							<ProjectTitle>{el.name}</ProjectTitle>
-							<ProjectImage
-								src={process.env.PUBLIC_URL + el.project[0].url}
-							></ProjectImage>
-						</ProjectCard>
-					))}
-				</Projects>
-				<Colabs>
-					@It's to be like that. Designed and developed by Alex.{" "}
-					{new Date().toDateString()}
-				</Colabs>
-			</Container>
+			{!modal && (
+				<Container>
+					<Title>My Projects</Title>
+					<Projects
+						style={{
+							columnCount: grid.column,
+							MozColumnCount: grid.column,
+							WebkitColumnCount: grid.column,
+						}}
+					>
+						{projects.map((el: Project, index: number) => (
+							<ProjectCard
+								key={index}
+								onClick={() => {
+									openModalInfo({ title: el.name });
+								}}
+							>
+								<ProjectTitle>{el.name}</ProjectTitle>
+								<ProjectImage
+									src={
+										process.env.PUBLIC_URL +
+										el.project[0].url
+									}
+								></ProjectImage>
+							</ProjectCard>
+						))}
+					</Projects>
+					<Colabs>
+						@It's to be like that. Designed and developed by Alex.{" "}
+						{new Date().toDateString()}
+					</Colabs>
+				</Container>
+			)}
 		</Content>
 	);
 };
