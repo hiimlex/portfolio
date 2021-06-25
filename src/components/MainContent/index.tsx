@@ -21,7 +21,7 @@ const MainContent: React.FC = () => {
 			<Colabs style={{ margin: "8px 0" }}>
 				@Developed and Design by me
 			</Colabs>
-			{location.pathname === "/" && (
+			{location.pathname === "/portfolio" && (
 				<Button style={{ marginTop: 12 }} onClick={navigateToAll}>
 					Ver Todos
 				</Button>
