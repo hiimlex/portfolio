@@ -5,8 +5,7 @@
 ### TODO
 
 -   add Projects DONE
--   dinamic grid
--   mobile interface
--   preload images
+-   dinamic grid DONE
+-   mobile interface DONE
 -   connect with my Website
--   all pages
+-   all pages DONE
