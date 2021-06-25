@@ -18,7 +18,7 @@ function AppRouter() {
 				<Route path="/portfolio/all">
 					<Landing></Landing>
 				</Route>
-				<Redirect to="/portfolio"></Redirect>
+				<Redirect from="/" to="/portfolio"></Redirect>
 			</Switch>
 		</Router>
 	);
