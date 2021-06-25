@@ -12,13 +12,13 @@ function AppRouter() {
 	return (
 		<Router>
 			<Switch>
-				<Route path="/portfolio" exact>
+				<Route path="/" exact>
 					<Portfolio></Portfolio>
 				</Route>
-				<Route path="/portfolio/all">
+				<Route path="/all">
 					<Landing></Landing>
 				</Route>
-				<Redirect to="/portfolio"></Redirect>
+				<Redirect to="/"></Redirect>
 			</Switch>
 		</Router>
 	);
