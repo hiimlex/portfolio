@@ -8,7 +8,7 @@ const MainContent: React.FC = () => {
 	const location = useLocation();
 
 	function navigateToAll() {
-		history.push("/portfolio/all");
+		history.push("/all");
 	}
 
 	return (
@@ -21,7 +21,7 @@ const MainContent: React.FC = () => {
 			<Colabs style={{ margin: "8px 0" }}>
 				@Developed and Design by me
 			</Colabs>
-			{location.pathname === "/portfolio" && (
+			{location.pathname === "/" && (
 				<Button style={{ marginTop: 12 }} onClick={navigateToAll}>
 					Ver Todos
 				</Button>

@@ -44,7 +44,7 @@ const Landing: React.FC<LandingProps> = (props) => {
 	const history = useHistory();
 
 	const goToHome = () => {
-		history.push("/portfolio");
+		history.push("/");
 	};
 
 	const fetchProjects = () => {
