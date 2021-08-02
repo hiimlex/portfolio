@@ -17,7 +17,7 @@ const tourApp: Project = {
 		{ title: "registrar", url: "/assets/tour-app/REGISTRAR.jpeg" },
 	],
 	description:
-		"Aplicativo/App - Em construção, o intuito dessa aplicação é conectar turistas/residentes/moradores da região, à meios de transportes de locomoção municipais e intermunicipais.",
+		"Application/App - Under construction, the purpose of this application is to connect tourists/residents/residents of the region, to municipal and intercity transportation means of transportation.",
 	url: "https://www.figma.com/file/12M1hiONlL7pmo2ikPtyAt/Mobilidade-Cariri?node-id=0%3A1",
 };
 
@@ -30,7 +30,7 @@ const agroMais: Project = {
 		{ title: "sobre-4", url: "/assets/agro-mais/sobre-4.jpeg" },
 	],
 	description:
-		"O Agro+Classificados visa auxiliar as atividades de exposição e vendas dos produtos de pequenos agricultores e pecuaristas, tendo em vista que, com frequência, a exposição dos seus produtos limitam-se apenas às feiras livres ou eventos não permanentes. Além disso, o número de clientes que visitam tais feiras é limitado a uma pequena região geográfica, geralmente de moradores de bairros ou cidades circunvizinhas.",
+		"Agro+Classificados aims to assist the exhibition and sales activities of small farmers and ranchers' products, considering that, often, the exhibition of their products is limited only to open fairs or non-permanent events. Furthermore, the number of customers who visit such fairs is limited to a small geographic region, usually residents of surrounding neighborhoods or cities.",
 	url: "http://agromaisfeira.crato.ifce.edu.br/sobre/",
 	colabs: [
 		"@RenanGustavo",
@@ -49,7 +49,7 @@ const agroMaisFeira: Project = {
 		{ title: "sobre-4", url: "/assets/agro-mais/sobre-4.jpeg" },
 	],
 	description:
-		"Projeto implementado em parceria com a prefeitura do Crato/CE, para feria regional de agricultura.",
+		"Project implemented in partnership with the city of Crato/CE, for a regional agricultural fair.",
 	url: "http://agromaisfeira.crato.ifce.edu.br/",
 	colabs: [
 		"@RenanGustavo",
@@ -74,7 +74,7 @@ const caderNet: Project = {
 		{ title: "caderNet-11", url: "/assets/CaderNet/caderNet-11.jpeg" },
 	],
 	description:
-		"A cadernet seria uma solução idealizada em um teste para propor a revendedoras um sistema de gerenciamento, disponiveis em IOS e Android.",
+		"Cadernet would be a solution conceived in a test to propose a management system to resellers, available in IOS and Android.",
 	url: "https://www.figma.com/file/3eHme2sO8H22oVwTC5Vwoz/CaderNet?node-id=2%3A0",
 };
 
@@ -91,7 +91,7 @@ const cargaCheia: Project = {
 		},
 	],
 	description:
-		"Este projeto foi idealizado e implementado para o Hackaton da Sabão Juá, realizado em Juazeiro do Norte, com intuito de conectar cargas a transportadoras.",
+		"This project was conceived and implemented for the Sabão Juá Hackaton, held in Juazeiro do Norte, in order to connect cargo to carriers.",
 	url: "https://www.figma.com/file/Te0zlXm4mPLH5P8a6lijsh/Hackathon-Sab%C3%A3o-Ju%C3%A1?node-id=28%3A2976",
 
 	colabs: ["@SauloJoab", "@IgorMelo", "@YuriLacerda"],
@@ -110,7 +110,7 @@ const rellusion: Project = {
 		},
 	],
 	description:
-		"Este projeto foi idealizado e implementado para o Hackaton da NASA Space Apps - Consiste em fornecer planetas em Realidade Aumentada, para um ensino mais didático.",
+		"This project was conceived and implemented for NASA Space Apps Hackaton - It consists of providing planets in Augmented Reality, for a more didactic teaching.",
 	url: "https://github.com/hiimlex/rellusion",
 
 	colabs: ["@RenanGustavo", "@IgorMelo", "@PaulaMicheli"],
@@ -127,7 +127,7 @@ const homEvents: Project = {
 		{ title: "home", url: "/assets/homevents/register.jpg" },
 	],
 	description:
-		"Bem no inicio da pandemia, eu implementei e idealizei uma maneira de compartilhar atividades fisicas a partir de casa, a HomEvents surgiu com a proposta de interligar praticantes de qualquer tipo de exercicio ou atividade compartilhada.",
+		"Right at the beginning of the pandemic, I implemented and idealized a way to share physical activities from home, HomEvents came up with the proposal to connect practitioners of any type of exercise or shared activity.",
 	url: "https://github.com/hiimlex/homevents",
 };
 
@@ -139,7 +139,7 @@ const homEventsMobile: Project = {
 		{ title: "home", url: "/assets/homevents/mobile3.jpg" },
 	],
 	description:
-		"Bem no inicio da pandemia, eu implementei e idealizei uma maneira de compartilhar atividades fisicas a partir de casa, a HomEvents surgiu com a proposta de interligar praticantes de qualquer tipo de exercicio ou atividade compartilhada.",
+		"Right at the beginning of the pandemic, I implemented and idealized a way to share physical activities from home, HomEvents came up with the proposal to connect practitioners of any type of exercise or shared activity.",
 	url: "https://github.com/hiimlex/homevents",
 };
 

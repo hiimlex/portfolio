@@ -26,7 +26,7 @@ const MainContent: React.FC = () => {
 				@Developed and Design by me
 			</Colabs>
 			<Button style={{ marginTop: 12 }} onClick={navigateToAll}>
-				Ver Todos
+				See All
 			</Button>
 			<Button style={{ marginTop: 12 }} onClick={navigateToCv}>
 				CV
