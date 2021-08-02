@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import useKeyPress from "../../utils/useKeyPress";
 import {
 	Article,
 	ArticleContent,
@@ -17,9 +18,57 @@ import {
 } from "./styles";
 
 const CV = () => {
+	const [display, setDisplay] = useState("block");
+
+	const crtl: boolean = useKeyPress("Control");
+	const p: boolean = useKeyPress("p");
+
+	useEffect(() => {
+		if (crtl) {
+			if (p) {
+				handlePrint();
+			}
+		}
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [crtl, p]);
+
+	const handlePrint = () => {
+		setDisplay("none");
+
+		setTimeout(() => {
+			window.scrollTo(0, 0);
+
+			window.print();
+		}, 200);
+	};
+
 	return (
 		<Content>
 			<Body>
+				<div
+					style={{
+						textAlign: "center",
+						marginBottom: 8,
+						fontSize: "0.8rem",
+						display: display,
+					}}
+				>
+					<span>
+						To take a good print of it, go to the top and press{" "}
+						<code
+							style={{
+								background: "#afafaf",
+								padding: "4px 8px",
+							}}
+						>
+							crtl + p
+						</code>{" "}
+						or just click here:{" "}
+					</span>
+					<button onClick={handlePrint}>Download</button>
+				</div>
+				<hr style={{ marginBottom: "8px", display: display }} />
 				<Header>
 					<HeaderTitle>Adaumi Alex Rodrigues Alves</HeaderTitle>
 					<HeaderSubtitle>alex.adaumi@gmail.com</HeaderSubtitle>
