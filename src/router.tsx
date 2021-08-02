@@ -22,7 +22,6 @@ function AppRouter() {
 				<Route path="/portfolio/cv">
 					<CV></CV>
 				</Route>
-				<Redirect from="/portfolio" to="/portfolio"></Redirect>
 				<Redirect from="*" to="/portfolio"></Redirect>
 			</Switch>
 		</Router>
