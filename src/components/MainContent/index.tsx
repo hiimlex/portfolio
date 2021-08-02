@@ -11,6 +11,10 @@ const MainContent: React.FC = () => {
 		history.push("/all");
 	}
 
+	function navigateToCv() {
+		history.push("/cv");
+	}
+
 	return (
 		<Container>
 			<Logo>
@@ -26,6 +30,9 @@ const MainContent: React.FC = () => {
 					Ver Todos
 				</Button>
 			)}
+			<Button style={{ marginTop: 12 }} onClick={navigateToCv}>
+				CV
+			</Button>
 		</Container>
 	);
 };
