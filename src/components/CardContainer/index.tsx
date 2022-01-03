@@ -50,11 +50,11 @@ const CardContainer: React.FC = () => {
 				image.height > 0
 			) {
 				if (image.width > image.height) {
-					card.size.w = image.width / 4;
-					card.size.h = image.height / 4;
+					card.size.w = image.width / 6;
+					card.size.h = image.height / 6;
 				} else if (image.width < image.height) {
-					card.size.w = image.width / 2.4;
-					card.size.h = image.height / 2.4;
+					card.size.w = image.width / 3;
+					card.size.h = image.height / 3;
 				}
 
 				setCards((cards) => [...cards, card]);

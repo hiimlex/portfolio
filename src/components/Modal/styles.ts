@@ -45,8 +45,8 @@ export const Overlay = styled.div`
 
 export const Close = styled.div`
 	position: absolute;
-	right: 8px;
-	top: 8px;
+	right: 18px;
+	top: 18px;
 
 	display: flex;
 	align-items: center;
