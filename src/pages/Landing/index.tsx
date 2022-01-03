@@ -62,11 +62,6 @@ const Landing: React.FC<LandingProps> = (props) => {
 		fetchProjects();
 	}, []);
 
-	useEffect(() => {
-		if (modal) {
-		}
-	}, [modal]);
-
 	return (
 		<Content>
 			<Back
@@ -104,8 +99,8 @@ const Landing: React.FC<LandingProps> = (props) => {
 						))}
 					</Projects>
 					<Colabs>
-						@It's to be like that. Designed and developed by Alex.{" "}
-						{new Date().toDateString()}
+						@Yesss, It's to be like that. Designed and developed by
+						Alex. {new Date().toDateString()}
 					</Colabs>
 				</Container>
 			)}

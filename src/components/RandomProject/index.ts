@@ -11,10 +11,10 @@ const projects: Project[] = [];
 const tourApp: Project = {
 	name: "CaririMob",
 	project: [
-		{ title: "home", url: "/assets/tour-app/HOME.jpeg" },
-		{ title: "login", url: "/assets/tour-app/LOGIN.jpeg" },
-		{ title: "points", url: "/assets/tour-app/POINTS.jpeg" },
-		{ title: "registrar", url: "/assets/tour-app/REGISTRAR.jpeg" },
+		{ title: "Home", url: "/assets/tour-app/HOME.jpeg" },
+		{ title: "Login", url: "/assets/tour-app/LOGIN.jpeg" },
+		{ title: "Points", url: "/assets/tour-app/POINTS.jpeg" },
+		{ title: "Register", url: "/assets/tour-app/REGISTRAR.jpeg" },
 	],
 	description:
 		"Application/App - Under construction, the purpose of this application is to connect tourists/residents/residents of the region, to municipal and intercity transportation means of transportation.",
@@ -24,10 +24,10 @@ const tourApp: Project = {
 const agroMais: Project = {
 	name: "Agro+",
 	project: [
-		{ title: "sobre-1", url: "/assets/agro-mais/sobre-1.jpeg" },
-		{ title: "sobre-2", url: "/assets/agro-mais/sobre-2.jpeg" },
-		{ title: "sobre-3", url: "/assets/agro-mais/sobre-3.jpeg" },
-		{ title: "sobre-4", url: "/assets/agro-mais/sobre-4.jpeg" },
+		{ title: "About-1", url: "/assets/agro-mais/sobre-1.jpeg" },
+		{ title: "About-2", url: "/assets/agro-mais/sobre-2.jpeg" },
+		{ title: "About-3", url: "/assets/agro-mais/sobre-3.jpeg" },
+		{ title: "About-4", url: "/assets/agro-mais/sobre-4.jpeg" },
 	],
 	description:
 		"Agro+Classificados aims to assist the exhibition and sales activities of small farmers and ranchers' products, considering that, often, the exhibition of their products is limited only to open fairs or non-permanent events. Furthermore, the number of customers who visit such fairs is limited to a small geographic region, usually residents of surrounding neighborhoods or cities.",
@@ -43,10 +43,10 @@ const agroMais: Project = {
 const agroMaisFeira: Project = {
 	name: "Agro+Feira",
 	project: [
-		{ title: "sobre-1", url: "/assets/agro-mais/sobre-1.jpeg" },
-		{ title: "sobre-2", url: "/assets/agro-mais/sobre-2.jpeg" },
-		{ title: "sobre-3", url: "/assets/agro-mais/sobre-3.jpeg" },
-		{ title: "sobre-4", url: "/assets/agro-mais/sobre-4.jpeg" },
+		{ title: "Home", url: "/assets/agro-mais/Agro-1.jpeg" },
+		{ title: "Login", url: "/assets/agro-mais/Agro-2.jpeg" },
+		{ title: "Profile", url: "/assets/agro-mais/Agro-3.jpeg" },
+		{ title: "Product", url: "/assets/agro-mais/Agro-4.jpeg" },
 	],
 	description:
 		"Project implemented in partnership with the city of Crato/CE, for a regional agricultural fair.",
@@ -82,11 +82,11 @@ const cargaCheia: Project = {
 	name: "Carga Cheia",
 	project: [
 		{
-			title: "home",
+			title: "Home",
 			url: "/assets/carga-cheia/carga-cheia-1.jpeg",
 		},
 		{
-			title: "home",
+			title: "Seller",
 			url: "/assets/carga-cheia/carga-cheia-2.jpeg",
 		},
 	],
@@ -101,12 +101,16 @@ const rellusion: Project = {
 	name: "Rellusion",
 	project: [
 		{
-			title: "home",
+			title: "Welcome",
 			url: "/assets/rellusion/Rellusion1.jpeg",
 		},
 		{
-			title: "home",
+			title: "Home",
 			url: "/assets/rellusion/Rellusion2.jpeg",
+		},
+		{
+			title: "Details",
+			url: "/assets/rellusion/Rellusion3.jpeg",
 		},
 	],
 	description:
@@ -119,12 +123,12 @@ const rellusion: Project = {
 const homEvents: Project = {
 	name: "HomEvents",
 	project: [
-		{ title: "home", url: "/assets/homevents/add.jpg" },
-		{ title: "home", url: "/assets/homevents/add3.jpg" },
-		{ title: "home", url: "/assets/homevents/add2.jpg" },
-		{ title: "home", url: "/assets/homevents/home.jpg" },
-		{ title: "home", url: "/assets/homevents/login.jpg" },
-		{ title: "home", url: "/assets/homevents/register.jpg" },
+		{ title: "Add", url: "/assets/homevents/add.jpg" },
+		{ title: "Add", url: "/assets/homevents/add3.jpg" },
+		{ title: "Add", url: "/assets/homevents/add2.jpg" },
+		{ title: "Home", url: "/assets/homevents/home.jpg" },
+		{ title: "Login", url: "/assets/homevents/login.jpg" },
+		{ title: "Register", url: "/assets/homevents/register.jpg" },
 	],
 	description:
 		"Right at the beginning of the pandemic, I implemented and idealized a way to share physical activities from home, HomEvents came up with the proposal to connect practitioners of any type of exercise or shared activity.",
@@ -134,13 +138,55 @@ const homEvents: Project = {
 const homEventsMobile: Project = {
 	name: "HomEvents - Mobile Interface",
 	project: [
-		{ title: "home", url: "/assets/homevents/mobile.jpg" },
-		{ title: "home", url: "/assets/homevents/mobile2.jpg" },
-		{ title: "home", url: "/assets/homevents/mobile3.jpg" },
+		{ title: "Login", url: "/assets/homevents/mobile.jpg" },
+		{ title: "Home", url: "/assets/homevents/mobile2.jpg" },
+		{ title: "Add", url: "/assets/homevents/mobile3.jpg" },
 	],
 	description:
 		"Right at the beginning of the pandemic, I implemented and idealized a way to share physical activities from home, HomEvents came up with the proposal to connect practitioners of any type of exercise or shared activity.",
 	url: "https://github.com/hiimlex/homevents",
+};
+
+const gitFeed: Project = {
+	name: "Git Feed",
+	project: [
+		{ title: "Login", url: "/assets/git-feed/git-feed1.jpg" },
+		{ title: "Home", url: "/assets/git-feed/git-feed2.jpg" },
+		{ title: "Profile", url: "/assets/git-feed/git-feed3.jpg" },
+	],
+	description:
+		"A feed of the latest news from users of GitHub. Similar to Twitter.",
+	url: "https://github.com/hiimlex/gitfeed",
+};
+
+const githubActivity: Project = {
+	name: "Github Activity",
+	project: [
+		{ title: "Login", url: "/assets/github-activity/github-activity1.jpg" },
+		{ title: "Home", url: "/assets/github-activity/github-activity2.jpg" },
+	],
+	description: "A feed of the activities from the logged user.",
+	url: "https://github.com/hiimlex/github-acvitity",
+};
+
+const sellMe: Project = {
+	name: "SellMe",
+	project: [
+		{ title: "Sell", url: "/assets/sell-me/sell-me1.jpg" },
+		{ title: "Sell 2", url: "/assets/sell-me/sell-me2.jpg" },
+		{ title: "Sell 3", url: "/assets/sell-me/sell-me3.jpg" },
+		{ title: "Sell 4", url: "/assets/sell-me/sell-me4.jpg" },
+		{ title: "List", url: "/assets/sell-me/sell-me5.jpg" },
+	],
+	description: "SellMe is a platform to buy anything from net.",
+	url: "https://github.com/hiimlex/sell-me",
+};
+
+const tuDum: Project = {
+	name: "Tu Dum",
+	project: [{ title: "Home", url: "/assets/tu-dum/tu-dum.jpg" }],
+	description: "To-do app.",
+	url: "https://github.com/hiimlex/tu-dum",
 };
 
 projects.push(
@@ -151,7 +197,11 @@ projects.push(
 	rellusion,
 	homEvents,
 	homEventsMobile,
-	agroMaisFeira
+	agroMaisFeira,
+	gitFeed,
+	githubActivity,
+	sellMe,
+	tuDum
 );
 
 export const randomProject = (): Project => {

@@ -49,9 +49,11 @@ const Modal: React.FC<ModalProps> = (props) => {
 
 	const handleOrientation: any = () => {
 		setCan(false);
+
 		if (modal) {
 			const image: HTMLImageElement = new Image();
 			image.src = process.env.PUBLIC_URL + modal.project[index].url;
+
 			image.onload = () => {
 				if (image && image.width > 0 && image.height > 0) {
 					if (image.width < image.height) {

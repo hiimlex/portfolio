@@ -1,11 +1,10 @@
 import React from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Button, Colabs } from "../Modal/styles";
 import { Container, Logo, Shadow, Subtitle, Title } from "./styles";
 
 const MainContent: React.FC = () => {
 	const history = useHistory();
-	const location = useLocation();
 
 	function navigateToAll() {
 		history.push("/portfolio/all");
