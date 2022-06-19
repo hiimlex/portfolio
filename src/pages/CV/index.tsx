@@ -1,3 +1,4 @@
+import { formatDistance } from "date-fns";
 import React, { useEffect, useState } from "react";
 import useKeyPress from "../../utils/useKeyPress";
 import {
@@ -33,12 +34,6 @@ const CV = () => {
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ctrl, p]);
-
-	const getAge = () => {
-		const now: Date = new Date();
-		const age: number = now.getFullYear() - birthday.getFullYear();
-		return age;
-	};
 
 	const handlePrint = () => {
 		setDisplay("none");
@@ -215,7 +210,9 @@ const CV = () => {
 						<Article>
 							<ArticleTitle>Personal</ArticleTitle>
 							<ArticleContent>
-								<b>Age:</b> {getAge()} years (03/08/1999)
+								<b>Age:</b>{" "}
+								{formatDistance(new Date(), birthday)}
+								(03/08/1999)
 							</ArticleContent>
 							<ArticleContent>
 								<b>Address:</b> Rua Senador Pompeu, 309. Apt.:
