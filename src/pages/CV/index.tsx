@@ -20,18 +20,25 @@ import {
 const CV = () => {
 	const [display, setDisplay] = useState("block");
 
-	const crtl: boolean = useKeyPress("Control");
+	const ctrl: boolean = useKeyPress("Control");
 	const p: boolean = useKeyPress("p");
+	const birthday: Date = new Date("08-03-1999");
 
 	useEffect(() => {
-		if (crtl) {
+		if (ctrl) {
 			if (p) {
 				handlePrint();
 			}
 		}
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [crtl, p]);
+	}, [ctrl, p]);
+
+	const getAge = () => {
+		const now: Date = new Date();
+		const age: number = now.getFullYear() - birthday.getFullYear();
+		return age;
+	};
 
 	const handlePrint = () => {
 		setDisplay("none");
@@ -62,7 +69,7 @@ const CV = () => {
 								padding: "4px 8px",
 							}}
 						>
-							crtl + p
+							ctrl + p
 						</code>{" "}
 						or just click here:{" "}
 					</span>
@@ -79,16 +86,10 @@ const CV = () => {
 							<ArticleTitle>WHO AM I?</ArticleTitle>
 
 							<ArticleContent>
-								Enthusiast of web development and open source, I
-								try to contribute to the development
-								environments where I pass, through the study of
-								the analysis of problem solutions around me. I
-								work as a FrontEnd developer and UX/UI Designer
-								at Brisanet Telecomunicações Development team.
-								Stack active: Angular2+, Less&SCSS, Cypress and
-								Karma for tests. Githuh and BitBucket to code
-								versioning. Design frameworks: Figma,
-								Illustrator.
+								Enthusiast interested in web development. I love
+								music and coffee, ant that's it. High stack:
+								JavaScript, NodeJs, TypeScript, Angular6+,
+								React, Svelte, Vue, SASS.
 							</ArticleContent>
 						</Article>
 
@@ -100,7 +101,7 @@ const CV = () => {
 									Farias Brito, CE, BR. — <i>Trainee</i>
 								</PostTitle>
 								<PostPeriod>
-									DECEMBER OF 2015 - MAY OF 2016
+									DECEMBER 2015 - MAY 2016
 								</PostPeriod>
 								<ArticleContent>
 									"According to the evaluation of the
@@ -122,9 +123,7 @@ const CV = () => {
 									Crato, CE, BR. —{" "}
 									<i>Researcher and Volunteer</i>
 								</PostTitle>
-								<PostPeriod>
-									JANUARY DE 2018 - UNTIL NOW
-								</PostPeriod>
+								<PostPeriod>JANUARY 2018 — 2022</PostPeriod>
 								<ArticleContent>
 									Student of the scientific research
 									environment and front end developer and UX /
@@ -139,12 +138,9 @@ const CV = () => {
 							<Post>
 								<PostTitle>
 									<b>Agro+ (project)</b>, Crato, CE, BR. —
-									<i>
-										Co-Founder and Dev. FrontEnd e UX/UI
-										Designer(september from 2018 to january
-										of 2020)
-									</i>
+									<i>Co-Founder, FrontEnd e UX/UI Designer</i>
 								</PostTitle>
+								<PostPeriod>SEPTEMBER 2018 — 2020</PostPeriod>
 								<ArticleContent>
 									This project aims to develop a web
 									advertising system to facilitate the
@@ -160,17 +156,31 @@ const CV = () => {
 							<Post>
 								<PostTitle>
 									<b>Brisanet Telecomunicações</b>, Juazeiro
-									do Norte, Ceará, BR. —
-									<i>
-										Dev. Frontend (November of 2020 until
-										now)
-									</i>
+									do Norte, Ceará, BR. —{" "}
+									<i>Frontend Developer and UI Designer </i>
 								</PostTitle>
+								<PostPeriod>
+									NOVEMBER 2020 — JANUARY 2022
+								</PostPeriod>
 								<ArticleContent>
 									As an internal developer, the team I'm
 									assigned to is focused on internal software.
 									To improve and help other sectors of the
 									company.
+								</ArticleContent>
+							</Post>
+
+							<Post>
+								<PostTitle>
+									<b>Venturus</b>, Campinas, São Paulo, BR. —
+									<i>Frontend Developer</i>
+								</PostTitle>
+								<PostPeriod>
+									FEBRUARY 2022 — UNTIL NOW
+								</PostPeriod>
+								<ArticleContent>
+									Frontend developer focused on architecture,
+									UI, and UX;
 								</ArticleContent>
 							</Post>
 						</Article>
@@ -185,9 +195,7 @@ const CV = () => {
 									</b>
 									, Campus Crato. — <i>College</i>
 								</PostTitle>
-								<PostPeriod>
-									MARCH OF 2016 - UNTIL NOW
-								</PostPeriod>
+								<PostPeriod>MARCH 2016 - UNTIL NOW</PostPeriod>
 								<ArticleContent>
 									Bachelor in Information Systems, attending
 									the ninth semester.
@@ -207,7 +215,7 @@ const CV = () => {
 						<Article>
 							<ArticleTitle>Personal</ArticleTitle>
 							<ArticleContent>
-								<b>Age:</b> 21 Years (03/08/1999)
+								<b>Age:</b> {getAge()} years (03/08/1999)
 							</ArticleContent>
 							<ArticleContent>
 								<b>Address:</b> Rua Senador Pompeu, 309. Apt.:
