@@ -178,6 +178,21 @@ const CV = () => {
 									UI, and UX;
 								</ArticleContent>
 							</Post>
+
+							<Post>
+								<PostTitle>
+									<b>Canon Medical Systems Brasil</b>,
+									Campinas, São Paulo, BR. —
+									<i>Frontend Developer and UX/UI Designer</i>
+								</PostTitle>
+								<PostPeriod>
+									AUGUST 2022 — JANUARY 2023
+								</PostPeriod>
+								<ArticleContent>
+									Frontend developer focused on architecture,
+									UI, and UX;
+								</ArticleContent>
+							</Post>
 						</Article>
 						<Article>
 							<ArticleTitle>ACADEMIC'S</ArticleTitle>
@@ -223,8 +238,9 @@ const CV = () => {
 						<Article>
 							<ArticleTitle>Languages</ArticleTitle>
 							<ArticleContent style={{ textAlign: "left" }}>
-								<b>Portuguese</b> (native), <b>English</b>{" "}
-								(working proficiency)
+								<b>Portuguese</b> (native),
+								<br />
+								<b>English</b> (working proficiency)
 							</ArticleContent>
 						</Article>
 
@@ -232,34 +248,23 @@ const CV = () => {
 							<Article>
 								<ArticleTitle>SEE ME/MY</ArticleTitle>
 								<ArticleContent>
-									<b>PORTFOLIO: </b>
-									<a href="https://hiimlex.github.io/portfolio">
-										Creative Portfolio
-									</a>
+									<b>All: </b>
+									<span>https://linktr.ee/yuninho</span>
+								</ArticleContent>
+								<ArticleContent>
+									<b>Portfolio: </b>
+									<span>
+										https://hiimlex.github.io/portfolio
+									</span>
 								</ArticleContent>
 								<ArticleContent>
 									<b>Github: </b>
-									<a href="https://github.com/hiimlex">
-										Code Portfolio
-									</a>
-								</ArticleContent>
-								<ArticleContent>
-									<b>Social's: </b>
-									<a href="https://linktr.ee/yuninho/">
-										Code Portfolio
-									</a>
+									<span>https://github.com/hiimlex</span>
 								</ArticleContent>
 							</Article>
 
 							<Article>
 								<ArticleTitle>Events</ArticleTitle>
-
-								<Post>
-									<PostTitle>
-										Teacher in SEMATEC(2019) “How to really
-										focus on developing web mobile first?”
-									</PostTitle>
-								</Post>
 
 								<Post>
 									<PostTitle>

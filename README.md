@@ -1,11 +1,14 @@
-# LeUX portfolios(On Build)
+# LeUX portfolios
+
+[link](https://hiimlex.github.io/portfolio)
 
 ### 🚀 My professional portfolio
 
-### TODO
+Feel free to use it as a template for your own portfolio.
 
--   add Projects DONE
--   dinamic grid DONE
--   mobile interface DONE
--   connect with my Website
--   all pages DONE
+### 🛠 Installation & Set Up
+
+```sh
+npm install
+yarn install
+```
